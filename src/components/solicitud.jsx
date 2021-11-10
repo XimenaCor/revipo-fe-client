@@ -6,7 +6,7 @@ const initialState = {
   email: '',
   message: '',
 }
-export const Contact = (props) => {
+export const Solicitud = (props) => {
   const [{ name, email, message }, setState] = useState(initialState)
 
   const handleChange = (e) => {
@@ -36,7 +36,7 @@ export const Contact = (props) => {
     <div>
       <div id='contact'>
         <div className='container'>
-          <div className='col-md-8'>
+          <div className='col-md-12'>
             <div className='row'>
               <div className='section-title'>
                 <h2>Formulario de Solicitud</h2>
@@ -276,7 +276,7 @@ export const Contact = (props) => {
               </form>
             </div>
           </div>
-          <div className='col-md-3 col-md-offset-1 contact-info'>
+          {/* <div className='col-md-3 col-md-offset-1 contact-info'>
             <div className='contact-item'>
               <h3>Contact Info</h3>
               <p>
@@ -302,7 +302,7 @@ export const Contact = (props) => {
                 {props.data ? props.data.email : 'loading'}
               </p>
             </div>
-          </div>
+          </div> */}
           <div className='col-md-12'>
             <div className='row'>
               <div className='social'>

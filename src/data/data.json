@@ -1,7 +1,7 @@
 {
   "Header": {
     "title": "REGISTRO DE VIDRIOS POLARIZADOS",
-    "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sed commodo nibh ante facilisis bibendum."
+    "paragraph": "Viceministerio de Seguridad Ciudadana."
   },
   "About": {
     "paragraph": "El presente reglamento surge como respuesta a la necesidad de un registro de los vehiculos polarizados, pensado siempre en el usuario final sus derechos, obligaciones y necesidades para construir una mejor Bolivia.",
@@ -67,32 +67,32 @@
   ],
   "Services": [
     {
-      "icon": "fa fa-wordpress",
+      "icon": "fa fa-file",
       "name": "Resolucion Ministerial",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "text": "Descargue la reolucion bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
     },
     {
-      "icon": "fa fa-cart-arrow-down",
+      "icon": "fa fa-file",
       "name": "Manual de Solicitud (Primera Vez)",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "text": "Descargue la reolucion bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
     },
     {
-      "icon": "fa fa-plane",
+      "icon": "fa fa-file",
       "name": "Manual de Renovacion",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "text": "Descargue la reolucion bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
     },
     {
-      "icon": "fa fa-cloud-download",
+      "icon": "fa fa-file",
       "name": "Ejmplo de Solicitud Suscrita",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "text": "Descargue la reolucion bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
     },
     {
-      "icon": "fa fa-language",
+      "icon": "fa fa-file",
       "name": "Ejemplo de Justificacion",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
     },
     {
-      "icon": "fa fa-pie-chart",
+      "icon": "fa fa-file",
       "name": "Ejemplo de Informe Tecnico",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
     }
@@ -101,37 +101,37 @@
     {
       "img": "img/testimonials/01.jpg",
       "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
-      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 7 dias habiles.",
+      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
       "name": "John Doe"
     },
     {
       "img": "img/testimonials/02.jpg",
       "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
-      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 7 dias habiles.",
+      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
       "name": "Johnathan Doe"
     },
     {
       "img": "img/testimonials/03.jpg",
       "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
-      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 7 dias habiles.",
+      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
       "name": "John Doe"
     },
     {
       "img": "img/testimonials/04.jpg",
       "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
-      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 7 dias habiles.",
+      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
       "name": "Johnathan Doe"
     },
     {
       "img": "img/testimonials/05.jpg",
       "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
-      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 7 dias habiles.",
+      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
       "name": "John Doe"
     },
     {
       "img": "img/testimonials/06.jpg",
       "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
-      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 7 dias habiles.",
+      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
       "name": "Johnathan Doe"
     }
   ],
@@ -167,24 +167,24 @@
   },
   "Features": [
     {
-      "icon": "fa fa-comments-o",
+      "icon": "fa fa-bank",
       "title": "Ministerio de Gobierno",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "text": "Pensando en la seguridad de los bolivianos."
     },
     {
-      "icon": "fa fa-bullhorn",
+      "icon": "fa fa-camera-retro",
       "title": "Seguridad Ciudadana",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "text": "Velando por la seguridad de los bolivianos."
     },
     {
-      "icon": "fa fa-group",
+      "icon": "fa fa-users",
       "title": "Policia Boliviana",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "text": "Protegiendo al ciudadano bla bla bla y etc y etc"
     },
     {
-      "icon": "fa fa-magic",
+      "icon": "fa fa-car",
       "title": "ANH",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "text": "Pensando en la seguridad de los bolivianos."
     }
   ]
 }
