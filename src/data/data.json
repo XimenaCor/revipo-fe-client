@@ -1,21 +1,18 @@
 {
   "Header": {
     "title": "REGISTRO DE VIDRIOS POLARIZADOS",
-    "paragraph": "Viceministerio de Seguridad Ciudadana."
+    "paragraph": "Viceministerio de Seguridad Ciudadana"
   },
   "About": {
-    "paragraph": "El presente reglamento surge como respuesta a la necesidad de un registro de los vehiculos polarizados, pensado siempre en el usuario final sus derechos, obligaciones y necesidades para construir una mejor Bolivia.",
+    "paragraph": "El presente reglamento tiene por objeto regular el procedimiento y los requisitos para la autorización del uso de vidrios oscurecidos o polarizados en vehículos de transporte terrestre.",
+    "paragraph2": "Las disposiciones del presente reglamento rigen en todo el territorio del Estado Plurinacional de Bolivia.",
     "Why": [
       "Registro actualizado",
-      "Seguridad ciudadana",
-      "Lorem ipsum dolor",
-      "Incididunt ut labore"
+      "Seguridad ciudadana"
     ],
     "Why2": [
-      "Aliquip ex ea commodo",
-      "Lorem ipsum dolor",
-      "Exercitation ullamco",
-      "Lorem ipsum dolor"
+      "Control Vehicular",
+      "Proteccion al ciudadano"
     ]
   },
   "Gallery": [
@@ -68,23 +65,23 @@
   "Services": [
     {
       "icon": "fa fa-file",
-      "name": "Resolucion Ministerial",
-      "text": "Descargue la reolucion bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
+      "name": "Resolución Ministerial",
+      "text": "Descargue la resolucion bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
     },
     {
       "icon": "fa fa-file",
       "name": "Manual de Solicitud (Primera Vez)",
-      "text": "Descargue la reolucion bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
+      "text": "Descargue la resolucion bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
     },
     {
       "icon": "fa fa-file",
       "name": "Manual de Renovacion",
-      "text": "Descargue la reolucion bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
+      "text": "Descargue la resolucion bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
     },
     {
       "icon": "fa fa-file",
-      "name": "Ejmplo de Solicitud Suscrita",
-      "text": "Descargue la reolucion bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
+      "name": "Ejemplo de Solicitud Suscrita",
+      "text": "Descargue la resolucion bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
     },
     {
       "icon": "fa fa-file",
@@ -99,40 +96,40 @@
   ],
   "Testimonials": [
     {
-      "img": "img/testimonials/01.jpg",
+      "img": "img/testimonials/P1-100.jpg",
       "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
       "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
-      "name": "John Doe"
+      "name": "Anónimo"
     },
     {
-      "img": "img/testimonials/02.jpg",
-      "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
-      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
-      "name": "Johnathan Doe"
+      "img": "img/testimonials/P2-100.jpg",
+      "question": "\"Debo contar con el servicio de whatsapp en mi equipo celular y numero telefonico?\"",
+      "answer": "No es obligatorio, sin embargo se le comunicaran por ese medio las respuestas a su solicitud.",
+      "name": "Anónimo"
     },
     {
-      "img": "img/testimonials/03.jpg",
+      "img": "img/testimonials/P3-100.jpg",
       "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
       "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
-      "name": "John Doe"
+      "name": "Anónimo"
     },
     {
-      "img": "img/testimonials/04.jpg",
+      "img": "img/testimonials/P4-100.jpg",
       "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
       "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
-      "name": "Johnathan Doe"
+      "name": "Anónimo"
     },
     {
-      "img": "img/testimonials/05.jpg",
+      "img": "img/testimonials/P5-100.jpg",
       "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
       "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
-      "name": "John Doe"
+      "name": "Anónimo"
     },
     {
-      "img": "img/testimonials/06.jpg",
+      "img": "img/testimonials/P6-100.jpg",
       "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
       "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
-      "name": "Johnathan Doe"
+      "name": "Anónimo"
     }
   ],
   "Team": [

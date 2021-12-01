@@ -1,25 +1,35 @@
 import {
   solicitudTypes,
   createSolicitudTypes,
+  verifySolicitudStateTypes,
+  uploadFilesTypes
 } from './constants'
 
 const initialState = {
+  uploads: {},
   solicitudForm: {
-    evento: null,
-    latitud: null,
-    longitud: null,
+    numeroDocumento: null,
+    expedido: null,
+    nombres: null,
+    primerApellido: null,
+    segundoApellido: null,
+    fechaNacimiento: null,
+    domicilio: null,
+    telefono: null,
+    email: null,
+    placa: null,
+    color: null,
+    anio: null,
+    marca: null,
+    modelo: null,
+    tipoVehiculo: null,
+    industria: null,
+    tipoSolicitud: null,
     departamento: null,
-    municipio: null,
-    denunciante: null,
-    descripcion: null,
-    observacion: null,
-    tipo: null,
-    responsable: null,
-    actor: null,
-    actorEspecifico: null,
-    cantidadMovilizada: null,
-    fechaInicioIncidente: null,
+    fechaInicioSol: null
   },
+  solicitudRes: null,
+  solicitudState: null,
   isLoading: false,
   error: ''
 };
@@ -41,10 +51,30 @@ const solicitudReducer = (
       return {
         ...state,
         isLoading: false,
-        solicitudForm: initialState.solicitudForm,
+        solicitudRes: payload
       };
 
     case createSolicitudTypes.FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: payload,
+      };
+
+    case verifySolicitudStateTypes.REQUEST:
+      return {
+        ...state,
+        solicitudState: {},
+        isLoading: true,
+        error: '',
+      };
+    case verifySolicitudStateTypes.SUCCESS:
+      return {
+        ...state,
+        solicitudState: payload,
+        isLoading: false,
+      };
+    case verifySolicitudStateTypes.FAILURE:
       return {
         ...state,
         isLoading: false,
@@ -63,7 +93,26 @@ const solicitudReducer = (
         solicitudForm: initialState.solicitudForm,
       };
 
+    case uploadFilesTypes.REQUEST:
+      return {
+        ...state,
+      };
 
+    case uploadFilesTypes.SUCCESS:
+      return {
+        ...state,
+        uploads: payload,
+        isLoading: false,
+        solicitudForm: initialState.solicitudForm,
+        solicitudRes: initialState.solicitudRes
+      };
+
+    case uploadFilesTypes.FAILURE:
+      return {
+        ...state,
+        error: payload,
+        isLoading: false,
+      };
     default:
       return state;
   }
