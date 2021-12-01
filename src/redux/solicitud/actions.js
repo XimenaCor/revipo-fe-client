@@ -1,6 +1,8 @@
 import {
   solicitudTypes,
-  createSolicitudTypes
+  createSolicitudTypes,
+  verifySolicitudStateTypes,
+  uploadFilesTypes
 } from './constants';
 
 export const solicitudActions = {
@@ -22,6 +24,32 @@ export const solicitudActions = {
   }),
   createSolicitudFailure: (err) => ({
     type: createSolicitudTypes.FAILURE,
+    payload: err,
+  }),
+
+  verifySolicitudStateRequest: (payload) => ({
+    type: verifySolicitudStateTypes.REQUEST,
+    payload,
+  }),
+  verifySolicitudStateSuccess: (payload) => ({
+    type: verifySolicitudStateTypes.SUCCESS,
+    payload,
+  }),
+  verifySolicitudStateFailure: (err) => ({
+    type: verifySolicitudStateTypes.FAILURE,
+    payload: err,
+  }),
+
+  uploadFilesRequest: (payload) => ({
+    type: uploadFilesTypes.REQUEST,
+    payload,
+  }),
+  uploadFilesSuccess: (payload) => ({
+    type: uploadFilesTypes.SUCCESS,
+    payload,
+  }),
+  uploadFilesFailure: (err) => ({
+    type: uploadFilesTypes.FAILURE,
     payload: err,
   }),
 
