@@ -65,14 +65,13 @@ export const Solicitud = (props) => {
         F.append("files", uploadedFiles[index]);
       }
       dispatch(solicitudActions.uploadFilesRequest({ files: F, solicitudId: solicitudRes.ide, solicitudCod: solicitudRes.codigo }))
-      setUploadedFiles([])
+      acceptedFiles.splice(0, 10);
     }
-  }, [dispatch, solicitudRes, uploadedFiles])
+  }, [dispatch, solicitudRes, uploadedFiles, acceptedFiles])
 
   const onSubmit = async (data, e) => {
     if (uploadedFiles.length < 1) {
       Swal.fire({
-        position: 'top-end',
         icon: 'warning',
         title: `No ha seleccionado ningun archivo!`,
         showConfirmButton: false,
@@ -85,7 +84,17 @@ export const Solicitud = (props) => {
           ...info,
           fechaInicioSol: fechaActual
       }
-      dispatch(solicitudActions.createSolicitudRequest({ values }));
+      Swal.fire({
+        title: 'Esta seguro de enviar la solicitud?',
+        text: "Tenga en cuenta que esta informacion se considerara una declaracion jurada, con efecto legal y pasible de investigacion",
+        showDenyButton: true,
+        confirmButtonText: 'Guardar',
+        denyButtonText: `Cancelar`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch(solicitudActions.createSolicitudRequest({ values }));
+        } 
+      })
     }
   }
 
@@ -97,7 +106,6 @@ export const Solicitud = (props) => {
 
   if (isLoading) {
     Swal.fire({
-      position: 'top-end',
       icon: 'warning',
       title: `Enviando solicitud...`,
       showConfirmButton: false,

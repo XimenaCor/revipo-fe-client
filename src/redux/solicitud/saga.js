@@ -15,18 +15,10 @@ function* createSolicitud({ payload }) {
   try {
     const res = yield call([services.solicitud, 'createSolicitud'], payload.values);
     yield put(solicitudActions.createSolicitudSuccess(res.data));
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Su solicitud se ha registrado exitosamente!',
-      showConfirmButton: false,
-      timer: 3000
-    })
   } catch (err) {
     console.error('function*createSolicitud -> err', err);
     yield put(solicitudActions.createSolicitudFailure(err.message));
     Swal.fire({
-      position: 'top-end',
       icon: 'error',
       title: `Solicitud no registrada, la placa: ${payload.values.placa} ya cuenta con un proceso activo!`,
       showConfirmButton: false,
@@ -53,7 +45,6 @@ function* verifySolicitudState({ payload }) {
       solicitudActions.verifySolicitudStateFailure(err.message),
     );
     Swal.fire({
-      position: 'top-end',
       icon: 'error',
       title: `Ha habido un error en la solicitud.`,
       showConfirmButton: false,
@@ -67,7 +58,6 @@ function* uploadFiles({ payload }) {
     const res = yield call([services.solicitud, 'uploadFiles'], payload);
     yield put(solicitudActions.uploadFilesSuccess(res.data));
     Swal.fire({
-      position: 'top-end',
       icon: 'success',
       title: `Atención, su codigo de solicitud es: ${payload.solicitudCod}`,
       text: 'Su solicitud se ha registrado exitosamente!',
@@ -78,7 +68,6 @@ function* uploadFiles({ payload }) {
     yield put(solicitudActions.uploadFilesFailure(err.message));
   }
 }
-
 
 function* solicitudSaga() {
   yield takeLatest(createSolicitudTypes.REQUEST, createSolicitud);
