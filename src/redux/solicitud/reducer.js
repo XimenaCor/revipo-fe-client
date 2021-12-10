@@ -8,6 +8,7 @@ import {
 const initialState = {
   uploads: {},
   solicitudForm: {
+    codigoSolicitud: null,
     numeroDocumento: null,
     expedido: null,
     nombres: null,
