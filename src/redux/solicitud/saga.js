@@ -6,7 +6,8 @@ import { solicitudActions } from './actions';
 import {
   createSolicitudTypes,
   uploadFilesTypes,
-  verifySolicitudStateTypes
+  verifySolicitudStateTypes,
+  updateSolicitudTypes
 } from './constants'
 import services from '../../services';
 
@@ -60,7 +61,7 @@ function* uploadFiles({ payload }) {
     Swal.fire({
       icon: 'success',
       title: `Atención, su codigo de solicitud es: ${payload.solicitudCod}`,
-      text: 'Su solicitud se ha registrado exitosamente!',
+      text: 'La accion se ha registrado exitosamente!',
       showConfirmButton: true,
     })
   } catch (err) {
@@ -69,10 +70,27 @@ function* uploadFiles({ payload }) {
   }
 }
 
+function* updateSolicitud({ payload }) {
+  try {
+    const res = yield call([services.solicitud, 'updateSolicitud'], payload);
+    yield put(solicitudActions.updateSolicitudSuccess(res.data));
+  } catch (err) {
+    console.error('function updateSolicitud -> err', err);
+    yield put(solicitudActions.updateSolicitudFailure(err.message));
+    Swal.fire({
+      icon: 'error',
+      title: `Ha habido un error en la solicitud.`,
+      showConfirmButton: false,
+      timer: 5000
+    })
+  }
+}
+
 function* solicitudSaga() {
   yield takeLatest(createSolicitudTypes.REQUEST, createSolicitud);
   yield takeLatest(verifySolicitudStateTypes.REQUEST, verifySolicitudState);
   yield takeLatest(uploadFilesTypes.REQUEST, uploadFiles);
+  yield takeLatest(updateSolicitudTypes.REQUEST, updateSolicitud);
 }
 
 export default solicitudSaga;

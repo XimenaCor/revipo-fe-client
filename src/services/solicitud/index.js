@@ -40,6 +40,15 @@ class Solicitud {
     }
   };
 
+  updateSolicitud = async (data) => {
+    try {
+      return await this.axios.put(`/solicitudes`, data.values);
+    } catch (err) {
+      console.error('Property -> updateSolicitud -> err', err);
+      throw err;
+    }
+  };
+
 }
 
 export default Solicitud;

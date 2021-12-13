@@ -2,7 +2,8 @@ import {
   solicitudTypes,
   createSolicitudTypes,
   verifySolicitudStateTypes,
-  uploadFilesTypes
+  uploadFilesTypes,
+  updateSolicitudTypes
 } from './constants'
 
 const initialState = {
@@ -47,14 +48,12 @@ const solicitudReducer = (
         ...state,
         isLoading: true,
       };
-
     case createSolicitudTypes.SUCCESS:
       return {
         ...state,
         isLoading: false,
         solicitudRes: payload
       };
-
     case createSolicitudTypes.FAILURE:
       return {
         ...state,
@@ -87,7 +86,6 @@ const solicitudReducer = (
         ...state,
         solicitudForm: payload,
       };
-
     case solicitudTypes.CLEAR_SOLICITUD_FORM:
       return {
         ...state,
@@ -98,7 +96,6 @@ const solicitudReducer = (
       return {
         ...state,
       };
-
     case uploadFilesTypes.SUCCESS:
       return {
         ...state,
@@ -107,13 +104,31 @@ const solicitudReducer = (
         solicitudForm: initialState.solicitudForm,
         solicitudRes: initialState.solicitudRes
       };
-
     case uploadFilesTypes.FAILURE:
       return {
         ...state,
         error: payload,
         isLoading: false,
       };
+
+    case updateSolicitudTypes.REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case updateSolicitudTypes.SUCCESS:
+      return {
+        ...initialState,
+        isLoading: false,
+        solicitudRes: payload,
+      };
+    case updateSolicitudTypes.FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: payload,
+      };
+
     default:
       return state;
   }

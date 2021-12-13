@@ -93,7 +93,7 @@ export const Edition = (props) => {
         denyButtonText: `Cancelar`,
       }).then((result) => {
         if (result.isConfirmed) {
-          dispatch(solicitudActions.createSolicitudRequest({ values }));
+          dispatch(solicitudActions.updateSolicitudRequest({ values }));
         }
       })
     }
