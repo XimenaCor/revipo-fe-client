@@ -2,7 +2,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { useDropzone } from 'react-dropzone'
-import Swal from 'sweetalert2'
+import SweetAlert from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { Top } from './top';
 
 import { solicitudActions } from '../redux/solicitud/actions'
@@ -10,6 +11,7 @@ import { solicitudActions } from '../redux/solicitud/actions'
 export const Request = (props) => {
   const dispatch = useDispatch();
   const actualYear = new Date();
+  const [alert, setalert] = React.useState(false)
   const [uploadedFiles, setUploadedFiles] = React.useState([]);
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
 
@@ -85,17 +87,20 @@ export const Request = (props) => {
         ...info,
         fechaInicioSol: fechaActual
       }
-      Swal.fire({
-        title: 'Esta seguro de enviar la solicitud?',
+      SweetAlert.fire({
+        title: '¿Esta seguro de enviar la solicitud?',
         text: "Tenga en cuenta que esta informacion se considerara una declaracion jurada, con efecto legal y pasible de investigacion",
-        showDenyButton: true,
-        confirmButtonText: 'Guardar',
-        denyButtonText: `Cancelar`,
-      }).then((result) => {
-        if (result.isConfirmed) {
-          dispatch(solicitudActions.createSolicitudRequest({ values }));
-        }
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si, continuar',
+        cancelButtonText: 'No, cancelar',
+        reverseButtons: true
       })
+        .then((result) => {
+          if (result.value) {
+            dispatch(solicitudActions.createSolicitudRequest({ values }));
+          }
+        })
     }
   }
 
@@ -119,7 +124,7 @@ export const Request = (props) => {
         <div className='container'>
           <div className='col-md-12'>
             <div className='row'>
-            <div className='section-title'>
+              <div className='section-title'>
                 <Top
                   header='FORMULARIO DE NUEVA SOLICITUD'
                   note='Asegurese de llenar los campos tal y como se encuentran en los documentos originales.'

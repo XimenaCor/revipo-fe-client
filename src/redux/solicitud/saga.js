@@ -7,7 +7,8 @@ import {
   createSolicitudTypes,
   uploadFilesTypes,
   verifySolicitudStateTypes,
-  updateSolicitudTypes
+  updateSolicitudTypes,
+  renewalSolicitudTypes
 } from './constants'
 import services from '../../services';
 
@@ -86,11 +87,28 @@ function* updateSolicitud({ payload }) {
   }
 }
 
+function* renewalSolicitud({ payload }) {
+  try {
+    const res = yield call([services.solicitud, 'renewalSolicitud'], payload.values);
+    yield put(solicitudActions.renewalSolicitudSuccess(res.data));
+  } catch (err) {
+    console.error('function*renewalSolicitud -> err', err);
+    yield put(solicitudActions.renewalSolicitudFailure(err.message));
+    Swal.fire({
+      icon: 'error',
+      title: `Ha habido un error!`,
+      showConfirmButton: false,
+      timer: 5000
+    })
+  }
+}
+
 function* solicitudSaga() {
   yield takeLatest(createSolicitudTypes.REQUEST, createSolicitud);
   yield takeLatest(verifySolicitudStateTypes.REQUEST, verifySolicitudState);
   yield takeLatest(uploadFilesTypes.REQUEST, uploadFiles);
   yield takeLatest(updateSolicitudTypes.REQUEST, updateSolicitud);
+  yield takeLatest(renewalSolicitudTypes.REQUEST, renewalSolicitud);
 }
 
 export default solicitudSaga;

@@ -2,13 +2,12 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { useDropzone } from 'react-dropzone'
-import SweetAlert from 'sweetalert2';
 import Swal from 'sweetalert2'
 import { Top } from './top';
 
 import { solicitudActions } from '../redux/solicitud/actions'
 
-export const Renewal = (props) => {
+export const Expiration = (props) => {
   const dispatch = useDispatch();
   const actualYear = new Date();
   const [uploadedFiles, setUploadedFiles] = React.useState([]);
@@ -86,20 +85,17 @@ export const Renewal = (props) => {
         ...info,
         fechaInicioSol: fechaActual
       }
-      SweetAlert.fire({
-        title: 'Esta seguro de enviar su solicitud de renovación?',
+      Swal.fire({
+        title: 'Esta seguro de editar su solicitud?',
         text: "Tenga en cuenta que esta informacion se considerara una declaracion jurada, con efecto legal y pasible de investigacion",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Si, continuar',
-        cancelButtonText: 'No, cancelar',
-        reverseButtons: true
+        showDenyButton: true,
+        confirmButtonText: 'Guardar',
+        denyButtonText: `Cancelar`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          dispatch(solicitudActions.updateSolicitudRequest({ values }));
+        }
       })
-        .then((result) => {
-          if (result.value) {
-            dispatch(solicitudActions.renewalSolicitudRequest({ values }));
-          }
-        })
     }
   }
 
@@ -119,13 +115,13 @@ export const Renewal = (props) => {
 
   return (
     <div>
-      <div id='renewal'>
+      <div id='expiration'>
         <div className='container'>
           <div className='col-md-12'>
             <div className='row'>
               <div className='section-title'>
                 <Top
-                  header='FORMULARIO DE SOLICITUD DE RENOVACIÓN'
+                  header='FORMULARIO DE SOLICITUD POR CADUCIDAD'
                   note='Asegurese de llenar los campos tal y como se encuentran en los documentos originales.'
                   info='Info: Procure llenar la solicitud con un número telefonico que tenga el servicio de whatsapp activado.' />
               </div>
@@ -133,9 +129,24 @@ export const Renewal = (props) => {
                 onChange={handleChange}
                 onSubmit={handleSubmit(onSubmit)}
               >
-                <h5>Datos de la Renovación</h5>
+                <h5>Datos de la Solicitud</h5>
                 <div className='row'>
-                  <div className='col-md-8'>
+                  <div className='col-md-4'>
+                    <div className='form-group'>
+                      <label>Codigo de Solicitud</label>
+                      <input
+                        name="codigoSolicitud" defaultValue={solicitudForm.codigoSolicitud} {...register('codigoSolicitud', { required: true })}
+                        className='form-control'
+                      />
+                      {
+                        errors.codigoSolicitud && (
+                          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+                        )
+                      }
+                      <p className='help-block text-danger'></p>
+                    </div>
+                  </div>
+                  <div className='col-md-4'>
                     <div className='form-group'>
                       <label>Tipo de Solicitud</label>
                       <select

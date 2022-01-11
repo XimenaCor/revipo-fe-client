@@ -49,6 +49,15 @@ class Solicitud {
     }
   };
 
+  renewalSolicitud = async (data) => {
+    try {
+      return await this.axios.post('/solicitudes/renewal', data);
+    } catch (err) {
+      console.error('Solicitud -> renewalSolicitud -> err', err);
+      throw err;
+    }
+  };
+
 }
 
 export default Solicitud;

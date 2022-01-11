@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { useDropzone } from 'react-dropzone'
+import SweetAlert from 'sweetalert2';
 import Swal from 'sweetalert2'
 import { Top } from './top';
 

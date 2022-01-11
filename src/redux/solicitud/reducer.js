@@ -3,7 +3,8 @@ import {
   createSolicitudTypes,
   verifySolicitudStateTypes,
   uploadFilesTypes,
-  updateSolicitudTypes
+  updateSolicitudTypes,
+  renewalSolicitudTypes
 } from './constants'
 
 const initialState = {
@@ -123,6 +124,24 @@ const solicitudReducer = (
         solicitudRes: payload,
       };
     case updateSolicitudTypes.FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        error: payload,
+      };
+
+    case renewalSolicitudTypes.REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case renewalSolicitudTypes.SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        solicitudRes: payload
+      };
+    case renewalSolicitudTypes.FAILURE:
       return {
         ...state,
         isLoading: false,

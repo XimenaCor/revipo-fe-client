@@ -3,7 +3,8 @@ import {
   createSolicitudTypes,
   verifySolicitudStateTypes,
   uploadFilesTypes,
-  updateSolicitudTypes
+  updateSolicitudTypes,
+  renewalSolicitudTypes
 } from './constants';
 
 export const solicitudActions = {
@@ -64,6 +65,19 @@ export const solicitudActions = {
   }),
   updateSolicitudFailure: (err) => ({
     type: updateSolicitudTypes.FAILURE,
+    payload: err,
+  }),
+
+  renewalSolicitudRequest: (payload) => ({
+    type: renewalSolicitudTypes.REQUEST,
+    payload,
+  }),
+  renewalSolicitudSuccess: (payload) => ({
+    type: renewalSolicitudTypes.SUCCESS,
+    payload,
+  }),
+  renewalSolicitudFailure: (err) => ({
+    type: renewalSolicitudTypes.FAILURE,
     payload: err,
   }),
 
