@@ -13,7 +13,9 @@ export const Request = (props) => {
   const actualYear = new Date();
   const [alert, setalert] = React.useState(false)
   const [uploadedFiles, setUploadedFiles] = React.useState([]);
-  const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
+  const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
+    accept: 'application/pdf'
+  });
 
   const solicitudForm = useSelector(
     (state) => state.solicitud.solicitudForm
@@ -48,12 +50,21 @@ export const Request = (props) => {
     reset(solicitudForm)
   }, [solicitudForm, reset])
 
-  const handleChange = (e) => dispatch(
-    solicitudActions.setSolicitudForm({
-      ...solicitudForm,
-      [e.target.name]: e.target.value
-    }),
-  );
+  const handleChange = (e) => {
+    if (e.target.name !== 'email') {
+      dispatch(solicitudActions.setSolicitudForm({
+          ...solicitudForm,
+          [e.target.name]: e.target.value.toUpperCase()
+        }),
+      )
+    } else {
+      dispatch(solicitudActions.setSolicitudForm({
+          ...solicitudForm,
+          [e.target.name]: e.target.value
+        }),
+      )
+    }
+  }
 
   React.useEffect(() => {
     if (acceptedFiles.length !== 0) {
@@ -85,7 +96,7 @@ export const Request = (props) => {
       const fechaActual = new Date()
       const values = {
         ...info,
-        fechaInicioSol: fechaActual
+        fechaSolicitud: fechaActual
       }
       SweetAlert.fire({
         title: '¿Esta seguro de enviar la solicitud?',
@@ -141,7 +152,7 @@ export const Request = (props) => {
                       <label>Tipo de Solicitud</label>
                       <select
                         name="tipoSolicitud" defaultValue={solicitudForm.tipoSolicitud} {...register('tipoSolicitud', { required: true })}
-                        className='form-control'
+                        className='form-control text-uppercase'
                       >
                         <option value="PERSONA NATURAL">PERSONA NATURAL</option>
                         <option value="VEHICULO OFICIAL">VEHÍCULOS OFICIALES, DIPLOMÁTICOS, CONSULARES Y DE ORGANISMO INTERNACIONALES</option>
@@ -159,7 +170,7 @@ export const Request = (props) => {
                     <div className='form-group'>
                       <label>Departamento de la solicitud </label>
                       <select name="departamento" defaultValue={solicitudForm.departamento} {...register('departamento', { required: true })}
-                        className="form-control" type="select"
+                        className="form-control text-uppercase" type="select"
                       >
                         <option value="LA PAZ">LA PAZ</option>
                         <option value="COCHABAMBA">COCHABAMBA</option>
@@ -187,7 +198,7 @@ export const Request = (props) => {
                       <label>Nombres</label>
                       <input
                         name="nombres" defaultValue={solicitudForm.nombres} {...register('nombres', { required: true })}
-                        className='form-control'
+                        className='form-control text-uppercase'
                       />
                       {
                         errors.nombres && (
@@ -202,7 +213,7 @@ export const Request = (props) => {
                       <label>Apellido Paterno</label>
                       <input
                         name="primerApellido" defaultValue={solicitudForm.primerApellido} {...register('primerApellido', { required: true })}
-                        className='form-control'
+                        className='form-control text-uppercase'
                       />
                       {
                         errors.primerApellido && (
@@ -217,7 +228,7 @@ export const Request = (props) => {
                       <label>Apellido Materno</label>
                       <input
                         name="segundoApellido" defaultValue={solicitudForm.segundoApellido} {...register('segundoApellido', { required: false })}
-                        className='form-control'
+                        className='form-control text-uppercase'
                       />
                       {
                         errors.segundoApellido && (
@@ -234,7 +245,7 @@ export const Request = (props) => {
                       <label>Número de Cedula de Identidad </label>
                       <input
                         name="numeroDocumento" defaultValue={solicitudForm.numeroDocumento} {...register('numeroDocumento', { required: true })}
-                        className='form-control'
+                        className='form-control text-uppercase'
                       />
                       {
                         errors.numeroDocumento && (
@@ -248,7 +259,7 @@ export const Request = (props) => {
                     <div className='form-group'>
                       <label>Expedido</label>
                       <select name="expedido" defaultValue={solicitudForm.expedido} {...register('expedido', { required: true })}
-                        className="form-control" type="select"
+                        className="form-control text-uppercase" type="select"
                       >
                         <option value="LP">LP</option>
                         <option value="CBB">CBB</option>
@@ -273,7 +284,7 @@ export const Request = (props) => {
                       <label>Teléfono</label>
                       <input
                         name="telefono" defaultValue={solicitudForm.telefono} {...register('telefono', { required: true })}
-                        className='form-control'
+                        className='form-control text-uppercase'
                       />
                       {
                         errors.telefono && (
@@ -306,7 +317,7 @@ export const Request = (props) => {
                       <input
                         name="fechaNacimiento" defaultValue={solicitudForm.fechaNacimiento} {...register('fechaNacimiento', { required: true })}
                         type="date"
-                        className='form-control'
+                        className='form-control text-uppercase'
                       />
                       {
                         errors.fechaNacimiento && (
@@ -321,7 +332,7 @@ export const Request = (props) => {
                       <label>Dirección domiciliaria </label>
                       <input
                         name="domicilio" defaultValue={solicitudForm.domicilio} {...register('domicilio', { required: true })}
-                        className='form-control'
+                        className='form-control text-uppercase'
                       />
                       {
                         errors.domicilio && (
@@ -340,7 +351,7 @@ export const Request = (props) => {
                       <label>Placa </label>
                       <input
                         name="placa" defaultValue={solicitudForm.placa} {...register('placa', { required: true })}
-                        className='form-control'
+                        className='form-control text-uppercase'
                       />
                       {
                         errors.placa && (
@@ -355,7 +366,7 @@ export const Request = (props) => {
                       <label>Color</label>
                       <input
                         name="color" defaultValue={solicitudForm.color} {...register('color', { required: true })}
-                        className='form-control'
+                        className='form-control text-uppercase'
                       />
                       {
                         errors.color && (
@@ -370,7 +381,7 @@ export const Request = (props) => {
                       <label>Año</label>
                       <input
                         name="anio" defaultValue={solicitudForm.anio} {...register('anio', { required: true })}
-                        className='form-control' type="number" min="1900" max={actualYear.getFullYear()}
+                        className='form-control text-uppercase' type="number" min="1900" max={actualYear.getFullYear()}
                       />
                       {
                         errors.anio && (
@@ -385,7 +396,7 @@ export const Request = (props) => {
                       <label>Marca</label>
                       <input
                         name="marca" defaultValue={solicitudForm.marca} {...register('marca', { required: true })}
-                        className='form-control'
+                        className='form-control text-uppercase'
                       />
                       {
                         errors.marca && (
@@ -402,7 +413,7 @@ export const Request = (props) => {
                       <label>Tipo de vehículo</label>
                       <input
                         name="tipoVehiculo" defaultValue={solicitudForm.tipoVehiculo} {...register('tipoVehiculo', { required: true })}
-                        className='form-control'
+                        className='form-control text-uppercase'
                       />
                       {
                         errors.tipoVehiculo && (
@@ -417,7 +428,7 @@ export const Request = (props) => {
                       <label>Industria</label>
                       <input
                         name="industria" defaultValue={solicitudForm.industria} {...register('industria', { required: true })}
-                        className='form-control'
+                        className='form-control text-uppercase'
                       />
                       {
                         errors.industria && (
@@ -432,7 +443,7 @@ export const Request = (props) => {
                       <label>Modelo </label>
                       <input
                         name="modelo" defaultValue={solicitudForm.modelo} {...register('modelo', { required: true })}
-                        className='form-control'
+                        className='form-control text-uppercase'
                       />
                       {
                         errors.modelo && (

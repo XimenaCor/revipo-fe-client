@@ -5,7 +5,6 @@ import 'react-tabs/style/react-tabs.css';
 import { Request } from './request';
 import { Renewal } from './renewal';
 import { Edition } from './edition';
-import { Expiration } from './expiration';
 import Swal from 'sweetalert2'
 
 import { solicitudActions } from '../redux/solicitud/actions'
@@ -42,7 +41,6 @@ export const Solicitud = (props) => {
                 <TabList>
                   <Tab>NUEVA SOLICITUD</Tab>
                   <Tab>RENOVACIÓN</Tab>
-                  <Tab>CADUCIDAD</Tab>
                   <Tab>EDICIÓN</Tab>
                 </TabList>
 
@@ -51,9 +49,6 @@ export const Solicitud = (props) => {
                 </TabPanel>
                 <TabPanel>
                   <Renewal />
-                </TabPanel>
-                <TabPanel>
-                  <Expiration />
                 </TabPanel>
                 <TabPanel>
                   <Edition />

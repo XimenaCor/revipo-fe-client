@@ -29,7 +29,7 @@ const initialState = {
     industria: null,
     tipoSolicitud: null,
     departamento: null,
-    fechaInicioSol: null
+    fechaSolicitud: null
   },
   solicitudRes: null,
   solicitudState: null,

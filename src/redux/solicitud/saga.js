@@ -16,13 +16,24 @@ import services from '../../services';
 function* createSolicitud({ payload }) {
   try {
     const res = yield call([services.solicitud, 'createSolicitud'], payload.values);
-    yield put(solicitudActions.createSolicitudSuccess(res.data));
+    if (res.status === 201) {
+      Swal.fire({
+        icon: 'error',
+        title: `${res.data}`,
+        showConfirmButton: false,
+        timer: 5000
+      })
+    }
+    if (res.status === 200) {
+      yield put(solicitudActions.createSolicitudSuccess(res.data));
+    }
+    console.log(res)
   } catch (err) {
     console.error('function*createSolicitud -> err', err);
     yield put(solicitudActions.createSolicitudFailure(err.message));
     Swal.fire({
       icon: 'error',
-      title: `Solicitud no registrada, la placa: ${payload.values.placa} ya cuenta con un proceso activo!`,
+      title: `Solicitud no registrada, ha habido un error!`,
       showConfirmButton: false,
       timer: 5000
     })
