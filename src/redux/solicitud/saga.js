@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux';
 import { call, takeLatest, put } from 'redux-saga/effects';
-import Swal from 'sweetalert2'
+import SweetAlert from 'sweetalert2'
 
 import { solicitudActions } from './actions';
 import {
@@ -17,7 +17,7 @@ function* createSolicitud({ payload }) {
   try {
     const res = yield call([services.solicitud, 'createSolicitud'], payload.values);
     if (res.status === 201) {
-      Swal.fire({
+      SweetAlert.fire({
         icon: 'error',
         title: `${res.data}`,
         showConfirmButton: false,
@@ -27,11 +27,10 @@ function* createSolicitud({ payload }) {
     if (res.status === 200) {
       yield put(solicitudActions.createSolicitudSuccess(res.data));
     }
-    console.log(res)
   } catch (err) {
     console.error('function*createSolicitud -> err', err);
     yield put(solicitudActions.createSolicitudFailure(err.message));
-    Swal.fire({
+    SweetAlert.fire({
       icon: 'error',
       title: `Solicitud no registrada, ha habido un error!`,
       showConfirmButton: false,
@@ -47,7 +46,7 @@ function* verifySolicitudState({ payload }) {
       payload,
     );
     yield put(solicitudActions.verifySolicitudStateSuccess(res.data));
-    Swal.fire({
+    SweetAlert.fire({
       icon: 'success',
       title: `${res.data}`,
       showConfirmButton: false,
@@ -57,7 +56,7 @@ function* verifySolicitudState({ payload }) {
     yield put(
       solicitudActions.verifySolicitudStateFailure(err.message),
     );
-    Swal.fire({
+    SweetAlert.fire({
       icon: 'error',
       title: `Ha habido un error en la solicitud.`,
       showConfirmButton: false,
@@ -70,7 +69,7 @@ function* uploadFiles({ payload }) {
   try {
     const res = yield call([services.solicitud, 'uploadFiles'], payload);
     yield put(solicitudActions.uploadFilesSuccess(res.data));
-    Swal.fire({
+    SweetAlert.fire({
       icon: 'success',
       title: `Atención, su codigo de solicitud es: ${payload.solicitudCod}`,
       text: 'La accion se ha registrado exitosamente!',
@@ -85,11 +84,21 @@ function* uploadFiles({ payload }) {
 function* updateSolicitud({ payload }) {
   try {
     const res = yield call([services.solicitud, 'updateSolicitud'], payload);
-    yield put(solicitudActions.updateSolicitudSuccess(res.data));
+    if (res.status === 200) {
+      yield put(solicitudActions.updateSolicitudSuccess(res.data));
+    }
+    if (res.status === 201) {
+      SweetAlert.fire({
+        icon: 'error',
+        title: `${res.data}`,
+        showConfirmButton: false,
+        timer: 5000
+      })
+    }
   } catch (err) {
     console.error('function updateSolicitud -> err', err);
     yield put(solicitudActions.updateSolicitudFailure(err.message));
-    Swal.fire({
+    SweetAlert.fire({
       icon: 'error',
       title: `Ha habido un error en la solicitud.`,
       showConfirmButton: false,
@@ -101,11 +110,21 @@ function* updateSolicitud({ payload }) {
 function* renewalSolicitud({ payload }) {
   try {
     const res = yield call([services.solicitud, 'renewalSolicitud'], payload.values);
-    yield put(solicitudActions.renewalSolicitudSuccess(res.data));
+    if (res.status === 201) {
+      SweetAlert.fire({
+        icon: 'error',
+        title: `${res.data}`,
+        showConfirmButton: false,
+        timer: 5000
+      })
+    }
+    if (res.status === 200) {
+      yield put(solicitudActions.renewalSolicitudSuccess(res.data));
+    }
   } catch (err) {
     console.error('function*renewalSolicitud -> err', err);
     yield put(solicitudActions.renewalSolicitudFailure(err.message));
-    Swal.fire({
+    SweetAlert.fire({
       icon: 'error',
       title: `Ha habido un error!`,
       showConfirmButton: false,

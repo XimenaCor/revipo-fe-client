@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { useDropzone } from 'react-dropzone'
 import SweetAlert from 'sweetalert2';
-import Swal from 'sweetalert2'
 import { Top } from './top';
 
 import { solicitudActions } from '../redux/solicitud/actions'
@@ -84,7 +83,7 @@ export const Edition = (props) => {
 
   const onSubmit = async (data, e) => {
     if (uploadedFiles.length < 1) {
-      Swal.fire({
+      SweetAlert.fire({
         icon: 'warning',
         title: `No ha seleccionado ningun archivo!`,
         showConfirmButton: false,
@@ -97,14 +96,16 @@ export const Edition = (props) => {
         ...info,
         fechaSolicitud: fechaActual
       }
-      Swal.fire({
-        title: 'Esta seguro de editar su solicitud?',
-        text: "Tenga en cuenta que esta informacion se considerara una declaracion jurada, con efecto legal y pasible de investigacion",
-        showDenyButton: true,
-        confirmButtonText: 'Guardar',
-        denyButtonText: `Cancelar`,
+      SweetAlert.fire({
+        title: '¿Esta seguro de editar su solicitud?',
+        text: "Tenga en cuenta que esta información se considerara una declaracion jurada, con efecto legal y pasible de investigacion",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Si, continuar',
+        cancelButtonText: 'No, cancelar',
+        reverseButtons: true
       }).then((result) => {
-        if (result.isConfirmed) {
+        if (result.value) {
           dispatch(solicitudActions.updateSolicitudRequest({ values }));
         }
       })
@@ -118,7 +119,7 @@ export const Edition = (props) => {
   ));
 
   if (isLoading) {
-    Swal.fire({
+    SweetAlert.fire({
       icon: 'warning',
       title: `Enviando solicitud...`,
       showConfirmButton: false,
@@ -363,6 +364,8 @@ export const Edition = (props) => {
                       <input
                         name="placa" defaultValue={solicitudForm.placa} {...register('placa', { required: true })}
                         className='form-control text-uppercase'
+                        pattern="[0-9]{4}[A-Z]{3}"
+                        placeholder='EJEM: 4321ABC'
                       />
                       {
                         errors.placa && (
@@ -455,6 +458,7 @@ export const Edition = (props) => {
                       <input
                         name="modelo" defaultValue={solicitudForm.modelo} {...register('modelo', { required: true })}
                         className='form-control text-uppercase'
+                        placeholder='EJEM: X-TERRA'
                       />
                       {
                         errors.modelo && (

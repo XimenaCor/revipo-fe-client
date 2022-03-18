@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { useDropzone } from 'react-dropzone'
 import SweetAlert from 'sweetalert2';
-import Swal from 'sweetalert2'
 import { Top } from './top';
 
 import { solicitudActions } from '../redux/solicitud/actions'
@@ -84,7 +83,7 @@ export const Renewal = (props) => {
 
   const onSubmit = async (data, e) => {
     if (uploadedFiles.length < 1) {
-      Swal.fire({
+      SweetAlert.fire({
         icon: 'warning',
         title: `No ha seleccionado ningun archivo!`,
         showConfirmButton: false,
@@ -121,7 +120,7 @@ export const Renewal = (props) => {
   ));
 
   if (isLoading) {
-    Swal.fire({
+    SweetAlert.fire({
       icon: 'warning',
       title: `Enviando solicitud...`,
       showConfirmButton: false,
@@ -351,6 +350,8 @@ export const Renewal = (props) => {
                       <input
                         name="placa" defaultValue={solicitudForm.placa} {...register('placa', { required: true })}
                         className='form-control text-uppercase'
+                        pattern="[0-9]{4}[A-Z]{3}"
+                        placeholder='EJEM: 4321ABC'
                       />
                       {
                         errors.placa && (
@@ -443,6 +444,7 @@ export const Renewal = (props) => {
                       <input
                         name="modelo" defaultValue={solicitudForm.modelo} {...register('modelo', { required: true })}
                         className='form-control text-uppercase'
+                        placeholder='EJEM: X-TERRA'
                       />
                       {
                         errors.modelo && (
