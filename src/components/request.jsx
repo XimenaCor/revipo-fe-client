@@ -120,14 +120,14 @@ export const Request = (props) => {
     </li>
   ));
 
-  if (isLoading) {
-    SweetAlert.fire({
-      icon: 'warning',
-      text: `Enviando solicitud...`,
-      showCancelButton: false,
-      showConfirmButton: false,
-    })
-  }
+  // if (isLoading) {
+  //   SweetAlert.fire({
+  //     icon: 'warning',
+  //     text: `Enviando solicitud...`,
+  //     showCancelButton: false,
+  //     showConfirmButton: false,
+  //   })
+  // }
 
   return (
     <div>

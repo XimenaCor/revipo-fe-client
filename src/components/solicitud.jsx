@@ -39,17 +39,17 @@ export const Solicitud = (props) => {
             <div className='row'>
               <Tabs>
                 <TabList>
-                  <Tab>NUEVA SOLICITUD</Tab>
-                  <Tab>RENOVACIÓN</Tab>
+                  <Tab>NUEVO TRAMITE</Tab>
+                  {/* <Tab>RENOVACIÓN</Tab> */}
                   <Tab>EDICIÓN</Tab>
                 </TabList>
 
                 <TabPanel>
                   <Request />
                 </TabPanel>
-                <TabPanel>
+                {/* <TabPanel>
                   <Renewal />
-                </TabPanel>
+                </TabPanel> */}
                 <TabPanel>
                   <Edition />
                 </TabPanel>
