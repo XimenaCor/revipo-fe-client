@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { Request } from './request';
-import { Renewal } from './renewal';
 import { Edition } from './edition';
 import Swal from 'sweetalert2'
 
@@ -40,16 +39,12 @@ export const Solicitud = (props) => {
               <Tabs>
                 <TabList>
                   <Tab>NUEVO TRAMITE</Tab>
-                  {/* <Tab>RENOVACIÓN</Tab> */}
                   <Tab>EDICIÓN</Tab>
                 </TabList>
 
                 <TabPanel>
                   <Request />
                 </TabPanel>
-                {/* <TabPanel>
-                  <Renewal />
-                </TabPanel> */}
                 <TabPanel>
                   <Edition />
                 </TabPanel>

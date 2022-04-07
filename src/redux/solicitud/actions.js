@@ -4,7 +4,8 @@ import {
   verifySolicitudStateTypes,
   uploadFilesTypes,
   updateSolicitudTypes,
-  renewalSolicitudTypes
+  renewalSolicitudTypes,
+  sendWhatsappCodeTypes
 } from './constants';
 
 export const solicitudActions = {
@@ -14,6 +15,9 @@ export const solicitudActions = {
   }),
   clearSolicitudForm: () => ({
     type: solicitudTypes.CLEAR_SOLICITUD_FORM,
+  }),
+  clearWhatsappCode: () => ({
+    type: solicitudTypes.CLEAR_WHATSAPP_CODE,
   }),
 
   createSolicitudRequest: (payload) => ({
@@ -81,4 +85,16 @@ export const solicitudActions = {
     payload: err,
   }),
 
+  sendWhatsappCodeRequest: (payload) => ({
+    type: sendWhatsappCodeTypes.REQUEST,
+    payload,
+  }),
+  sendWhatsappCodeSuccess: (payload) => ({
+    type: sendWhatsappCodeTypes.SUCCESS,
+    payload,
+  }),
+  sendWhatsappCodeFailure: (err) => ({
+    type: sendWhatsappCodeTypes.FAILURE,
+    payload: err,
+  }),
 };

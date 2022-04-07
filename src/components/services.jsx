@@ -5,7 +5,7 @@ export const Services = (props) => {
         <div className='section-title'>
           <h2>Archivos y Documentacion</h2>
           <p>
-            Los siguientes archivos son documentos con la normativa oficial, manuales de uso, ejemplos de archivos necesarios, etc.
+            Los siguientes archivos son documentos con la normativa oficial, manuales de uso, ejemplos de archivos requeridos, etc.
           </p>
         </div>
         <div className='row'>

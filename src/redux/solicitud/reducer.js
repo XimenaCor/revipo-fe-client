@@ -4,7 +4,8 @@ import {
   verifySolicitudStateTypes,
   uploadFilesTypes,
   updateSolicitudTypes,
-  renewalSolicitudTypes
+  renewalSolicitudTypes,
+  sendWhatsappCodeTypes
 } from './constants'
 
 const initialState = {
@@ -33,6 +34,8 @@ const initialState = {
   },
   solicitudRes: null,
   solicitudState: null,
+  whatsappCode: null,
+  isLoadingWhatsappCode: false,
   isLoading: false,
   error: ''
 };
@@ -53,13 +56,15 @@ const solicitudReducer = (
       return {
         ...state,
         isLoading: false,
-        solicitudRes: payload
+        solicitudRes: payload,
+        whatsappCode: null
       };
     case createSolicitudTypes.FAILURE:
       return {
         ...state,
         isLoading: false,
         error: payload,
+        whatsappCode: null
       };
 
     case verifySolicitudStateTypes.REQUEST:
@@ -92,6 +97,11 @@ const solicitudReducer = (
         ...state,
         solicitudForm: initialState.solicitudForm,
       };
+    case solicitudTypes.CLEAR_WHATSAPP_CODE:
+      return {
+        ...state,
+        whatsappCode: initialState.whatsappCode,
+      };
 
     case uploadFilesTypes.REQUEST:
       return {
@@ -103,7 +113,8 @@ const solicitudReducer = (
         uploads: payload,
         isLoading: false,
         solicitudForm: initialState.solicitudForm,
-        solicitudRes: initialState.solicitudRes
+        solicitudRes: initialState.solicitudRes,
+        whatsappCode: null
       };
     case uploadFilesTypes.FAILURE:
       return {
@@ -145,6 +156,24 @@ const solicitudReducer = (
       return {
         ...state,
         isLoading: false,
+        error: payload,
+      };
+
+    case sendWhatsappCodeTypes.REQUEST:
+      return {
+        ...state,
+        isLoadingWhatsappCode: true,
+      };
+    case sendWhatsappCodeTypes.SUCCESS:
+      return {
+        ...state,
+        whatsappCode: payload,
+        isLoadingWhatsappCode: false,
+      };
+    case sendWhatsappCodeTypes.FAILURE:
+      return {
+        ...state,
+        isLoadingWhatsappCode: false,
         error: payload,
       };
 

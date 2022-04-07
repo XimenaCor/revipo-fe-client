@@ -8,7 +8,8 @@ import {
   uploadFilesTypes,
   verifySolicitudStateTypes,
   updateSolicitudTypes,
-  renewalSolicitudTypes
+  renewalSolicitudTypes,
+  sendWhatsappCodeTypes
 } from './constants'
 import services from '../../services';
 
@@ -133,12 +134,34 @@ function* renewalSolicitud({ payload }) {
   }
 }
 
+function* sendWhatsappCode({ payload }) {
+  try {
+    const res = yield call(
+      [services.solicitud, 'sendWhatsappCode'],
+      payload,
+    );
+    yield put(solicitudActions.sendWhatsappCodeSuccess(res.data));
+  } catch (err) {
+    console.error('function*sendWhatsappCode -> err', err);
+    yield put(
+      solicitudActions.sendWhatsappCodeFailure(err.message),
+    );
+    SweetAlert.fire({
+      icon: 'error',
+      title: `Ha habido un error en la solicitud.`,
+      showConfirmButton: false,
+      timer: 5000
+    })
+  }
+}
+
 function* solicitudSaga() {
   yield takeLatest(createSolicitudTypes.REQUEST, createSolicitud);
   yield takeLatest(verifySolicitudStateTypes.REQUEST, verifySolicitudState);
   yield takeLatest(uploadFilesTypes.REQUEST, uploadFiles);
   yield takeLatest(updateSolicitudTypes.REQUEST, updateSolicitud);
   yield takeLatest(renewalSolicitudTypes.REQUEST, renewalSolicitud);
+  yield takeLatest(sendWhatsappCodeTypes.REQUEST, sendWhatsappCode);
 }
 
 export default solicitudSaga;

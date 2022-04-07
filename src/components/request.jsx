@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { useDropzone } from 'react-dropzone'
 import SweetAlert from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { Top } from './top';
 
 import { solicitudActions } from '../redux/solicitud/actions'
@@ -10,8 +11,8 @@ import { solicitudActions } from '../redux/solicitud/actions'
 export const Request = (props) => {
   const dispatch = useDispatch();
   const actualYear = new Date();
-  const [alert, setalert] = React.useState(false)
   const [uploadedFiles, setUploadedFiles] = React.useState([]);
+  const [values, setValues] = React.useState(null);
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     accept: 'application/pdf'
   });
@@ -24,8 +25,16 @@ export const Request = (props) => {
     (state) => state.solicitud.solicitudRes
   )
 
-  const isLoading = useSelector(
-    (state) => state.solicitud.isLoading
+  const whatsappCode = useSelector(
+    (state) => state.solicitud.whatsappCode
+  )
+
+  const isLoadingWhatsappCode = useSelector(
+    (state) => state.solicitud.isLoadingWhatsappCode
+  )
+
+  const error = useSelector(
+    (state) => state.solicitud.error
   )
 
   const {
@@ -52,15 +61,15 @@ export const Request = (props) => {
   const handleChange = (e) => {
     if (e.target.name !== 'email') {
       dispatch(solicitudActions.setSolicitudForm({
-          ...solicitudForm,
-          [e.target.name]: e.target.value.toUpperCase()
-        }),
+        ...solicitudForm,
+        [e.target.name]: e.target.value.toUpperCase()
+      }),
       )
     } else {
       dispatch(solicitudActions.setSolicitudForm({
-          ...solicitudForm,
-          [e.target.name]: e.target.value
-        }),
+        ...solicitudForm,
+        [e.target.name]: e.target.value
+      }),
       )
     }
   }
@@ -93,26 +102,50 @@ export const Request = (props) => {
     } else {
       const { name, ...info } = data;
       const fechaActual = new Date()
-      const values = {
+      const dataObj = {
         ...info,
         fechaSolicitud: fechaActual
       }
+      setValues(dataObj)
       SweetAlert.fire({
         title: '¿Esta seguro de enviar la solicitud?',
-        text: "Tenga en cuenta que esta informacion se considerara una declaracion jurada, con efecto legal y pasible de investigacion",
+        text: "Tenga en cuenta que esta información se considerara una declaracion jurada, con efecto legal y pasible de investigacion",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Si, continuar',
         cancelButtonText: 'No, cancelar',
         reverseButtons: true
       })
-        .then((result) => {
+        .then(async (result) => {
           if (result.value) {
-            dispatch(solicitudActions.createSolicitudRequest({ values }));
+            await dispatch(solicitudActions.sendWhatsappCodeRequest(dataObj.telefono))
           }
-        })
+        }
+        )
     }
   }
+
+  React.useEffect(() => {
+    if (!isLoadingWhatsappCode && !error && whatsappCode && values) {
+      Swal.fire({
+        title: 'Se le ha enviado un codigo de verificacion al whatsapp de su telefono.',
+        text: 'Introduzca el codigo recibido para concluir con el registro',
+        input: 'text',
+        inputAttributes: {
+          autocapitalize: 'off'
+        }, 
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar Todo',
+        confirmButtonText: 'Comparar',
+        showLoaderOnConfirm: true,
+        preConfirm: (whatcode) => {
+          if (whatsappCode === whatcode) {
+            dispatch(solicitudActions.createSolicitudRequest({ values }));
+          }
+        }
+      })
+    }
+  }, [isLoadingWhatsappCode, error, values, whatsappCode, dispatch])
 
   const filesList = acceptedFiles.map(file => (
     <li key={file.path}>
@@ -120,14 +153,14 @@ export const Request = (props) => {
     </li>
   ));
 
-  // if (isLoading) {
-  //   SweetAlert.fire({
-  //     icon: 'warning',
-  //     text: `Enviando solicitud...`,
-  //     showCancelButton: false,
-  //     showConfirmButton: false,
-  //   })
-  // }
+  React.useEffect(() => {
+    if (whatsappCode !== null) {
+      setTimeout(() => {
+        dispatch(solicitudActions.clearWhatsappCode())
+      }, 20000);
+      
+    }
+  }, [whatsappCode, dispatch])
 
   return (
     <div>

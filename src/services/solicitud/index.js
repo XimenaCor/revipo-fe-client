@@ -58,6 +58,17 @@ class Solicitud {
     }
   };
 
+  //This service should have its own folder, no time enough so, let's improve it later.
+  sendWhatsappCode = async (telefono) => {
+    try {
+      const res = await this.axios.get(`/externals/message/code/${telefono}`);
+      return res;
+    } catch (err) {
+      console.error('Solicitud -> sendWhatsappCode -> err', err);
+      throw err;
+    }
+  };
+
 }
 
 export default Solicitud;

@@ -225,7 +225,7 @@ a:focus,
 .intro h1 {
   font-family: "Raleway", sans-serif;
   color: #fff;
-  font-size: 82px;
+  font-size: 63px;
   font-weight: 700;
   text-transform: uppercase;
   margin-top: 0;
@@ -303,7 +303,7 @@ header .intro-text {
   padding-right: 8px;
 }
 #about img {
-  width: 520px;
+  width: 490px;
   margin-top: 10px;
   background: #fff;
   border-right: 0;

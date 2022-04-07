@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { useDropzone } from 'react-dropzone'
 import SweetAlert from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { Top } from './top';
 
 import { solicitudActions } from '../redux/solicitud/actions'
@@ -11,6 +12,7 @@ export const Edition = (props) => {
   const dispatch = useDispatch();
   const actualYear = new Date();
   const [uploadedFiles, setUploadedFiles] = React.useState([]);
+  const [values, setValues] = React.useState(null);
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone({
     accept: 'application/pdf'
   });
@@ -23,8 +25,16 @@ export const Edition = (props) => {
     (state) => state.solicitud.solicitudRes
   )
 
-  const isLoading = useSelector(
-    (state) => state.solicitud.isLoading
+  const whatsappCode = useSelector(
+    (state) => state.solicitud.whatsappCode
+  )
+
+  const isLoadingWhatsappCode = useSelector(
+    (state) => state.solicitud.isLoadingWhatsappCode
+  )
+
+  const error = useSelector(
+    (state) => state.solicitud.error
   )
 
   const {
@@ -92,10 +102,11 @@ export const Edition = (props) => {
     } else {
       const { name, ...info } = data;
       const fechaActual = new Date()
-      const values = {
+      const dataObj = {
         ...info,
         fechaSolicitud: fechaActual
       }
+      setValues(dataObj)
       SweetAlert.fire({
         title: '¿Esta seguro de editar su solicitud?',
         text: "Tenga en cuenta que esta información se considerara una declaracion jurada, con efecto legal y pasible de investigacion",
@@ -106,25 +117,40 @@ export const Edition = (props) => {
         reverseButtons: true
       }).then((result) => {
         if (result.value) {
-          dispatch(solicitudActions.updateSolicitudRequest({ values }));
+          dispatch(solicitudActions.sendWhatsappCodeRequest(dataObj.telefono))
+          // dispatch(solicitudActions.updateSolicitudRequest({ values }));
         }
       })
     }
   }
+
+  React.useEffect(() => {
+    if (!isLoadingWhatsappCode && !error && whatsappCode && values) {
+      Swal.fire({
+        title: 'Se le ha enviado un codigo de verificacion al whatsapp de su telefono.',
+        text: 'Introduzca el codigo recibido para concluir con el registro',
+        input: 'text',
+        inputAttributes: {
+          autocapitalize: 'off'
+        }, 
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar Todo',
+        confirmButtonText: 'Comparar',
+        showLoaderOnConfirm: true,
+        preConfirm: (whatcode) => {
+          if (whatsappCode === whatcode) {
+            dispatch(solicitudActions.updateSolicitudRequest({ values }));
+          }
+        }
+      })
+    }
+  }, [isLoadingWhatsappCode, error, values, whatsappCode, dispatch])
 
   const filesList = acceptedFiles.map(file => (
     <li key={file.path}>
       * {file.path} - {file.size} bytes
     </li>
   ));
-
-  if (isLoading) {
-    SweetAlert.fire({
-      icon: 'warning',
-      title: `Enviando solicitud...`,
-      showConfirmButton: false,
-    })
-  }
 
   return (
     <div>
