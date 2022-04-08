@@ -117,7 +117,7 @@ export const Edition = (props) => {
         reverseButtons: true
       }).then((result) => {
         if (result.value) {
-          dispatch(solicitudActions.sendWhatsappCodeRequest(dataObj.telefono))
+          dispatch(solicitudActions.sendWhatsappCodeRequest({ email: dataObj.email, telefono: dataObj.telefono }))
           // dispatch(solicitudActions.updateSolicitudRequest({ values }));
         }
       })
@@ -174,11 +174,11 @@ export const Edition = (props) => {
                     <div className='form-group'>
                       <label>Codigo de Solicitud</label>
                       <input
-                        name="codigoSolicitud" defaultValue={solicitudForm.codigoSolicitud} {...register('codigoSolicitud', { required: true })}
+                        name="codigoEspecifico" defaultValue={solicitudForm.codigoEspecifico} {...register('codigoEspecifico', { required: true })}
                         className='form-control text-uppercase'
                       />
                       {
-                        errors.codigoSolicitud && (
+                        errors.codigoEspecifico && (
                           <span style={{ color: "tomato" }}>Este campo es requerido!</span>
                         )
                       }

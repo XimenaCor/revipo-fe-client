@@ -7,7 +7,7 @@ export const Header = (props) => {
             <div className='row'>
               <div className='col-md-8 col-md-offset-2 intro-text'>
                 <h1 style={{ paddingTop: '100px', paddingBottom: '100px'}}>
-                  {props.data ? props.data.title : 'Loading'}
+                  {/* {props.data ? props.data.title : 'Loading'} */}
                   <span></span>
                 </h1>
                 {/* <p>{props.data ? props.data.paragraph : 'Loading'}</p> */}

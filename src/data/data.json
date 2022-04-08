@@ -1,6 +1,6 @@
 {
   "Header": {
-    "title": "MINISTERIO DE GOBIERNO",
+    "title": "",
     "paragraph": "Viceministerio de Seguridad Ciudadana"
   },
   "About": {
@@ -98,39 +98,39 @@
   ],
   "Testimonials": [
     {
-      "img": "img/testimonials/P1-100.jpg",
-      "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
-      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
-      "name": "Anónimo"
-    },
-    {
-      "img": "img/testimonials/P2-100.jpg",
-      "question": "\"Debo contar con el servicio de whatsapp en mi equipo celular y numero telefonico?\"",
-      "answer": "No es obligatorio, sin embargo se le comunicaran por ese medio las respuestas a su solicitud.",
-      "name": "Anónimo"
-    },
-    {
-      "img": "img/testimonials/P3-100.jpg",
-      "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
-      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
-      "name": "Anónimo"
-    },
-    {
-      "img": "img/testimonials/P4-100.jpg",
-      "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
-      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
+      "img": "img/testimonials/P6-100.jpg",
+      "question": "\"¿Existe sanción por manejar vehículos con vidrios oscurecidos o polarizados sin autorización?\"",
+      "answer": "Si, la sanción está regulada por el Reglamento al Código de Tránsito como infracción de primer grado.",
       "name": "Anónimo"
     },
     {
       "img": "img/testimonials/P5-100.jpg",
-      "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
-      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
+      "question": "\"¿La solicitud de autorización especial de uso de vidrios oscurecidos o polarizados tiene un costo?\"",
+      "answer": "Si, el trámite aprobado tiene un costo de Bs. 250.",
       "name": "Anónimo"
     },
     {
-      "img": "img/testimonials/P6-100.jpg",
-      "question": "\"Cuanto tiempo luego de hecha la solicitud pasara para que yo sepa si se ha aprobado mi solicitud o no?\"",
-      "answer": "Los documentos seran revisados y el usuario tendra una respuesta en los sguientes 10 dias habiles.",
+      "img": "img/testimonials/P4-100.jpg",
+      "question": "\"¿Si el trámite de solicitud de autorización especial de uso de vidrios oscurecidos o polarizados, es rechazado, se puede presentar nuevamente la solicitud?\"",
+      "answer": "Si, una vez subsanadas las observaciones y cumplidos los requisitos, se puede presentar nuevamente la solicitud.",
+      "name": "Anónimo"
+    },
+    {
+      "img": "img/testimonials/P3-100.jpg",
+      "question": "\"¿Cuál es la justificación para solicitud la autorización especial de uso de vidrios polarizados?\"",
+      "answer": "Se deberá acreditar la existencia de riesgo de seguridad personal, integridad física, salud u otro debidamente documentado.",
+      "name": "Anónimo"
+    },
+    {
+      "img": "img/testimonials/P2-100.jpg",
+      "question": "\"¿Los vidrios oscurecidos de fábrica, deben realizar el trámite de autorización especial?\"",
+      "answer": "Si, deben realizar el trámite por única vez.",
+      "name": "Anónimo"
+    },
+    {
+      "img": "img/testimonials/P1-100.jpg",
+      "question": "\"¿Cuál es la duración del trámite de solicitud de autorización especial de uso de vidrios oscurecidos o polarizados?\"",
+      "answer": "El trámite tiene una duración de siete (7) días hábiles, en caso de observaciones el plazo es de catorce (14) días hábiles.",
       "name": "Anónimo"
     }
   ],

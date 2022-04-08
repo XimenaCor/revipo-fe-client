@@ -11,7 +11,7 @@ import {
 const initialState = {
   uploads: {},
   solicitudForm: {
-    codigoSolicitud: null,
+    codigoEspecifico: null,
     numeroDocumento: null,
     expedido: null,
     nombres: null,

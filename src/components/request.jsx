@@ -29,6 +29,10 @@ export const Request = (props) => {
     (state) => state.solicitud.whatsappCode
   )
 
+  const isLoading = useSelector(
+    (state) => state.solicitud.isLoading
+  )
+
   const isLoadingWhatsappCode = useSelector(
     (state) => state.solicitud.isLoadingWhatsappCode
   )
@@ -118,7 +122,7 @@ export const Request = (props) => {
       })
         .then(async (result) => {
           if (result.value) {
-            await dispatch(solicitudActions.sendWhatsappCodeRequest(dataObj.telefono))
+            dispatch(solicitudActions.sendWhatsappCodeRequest({ email: dataObj.email, telefono: dataObj.telefono }))
           }
         }
         )
@@ -161,6 +165,15 @@ export const Request = (props) => {
       
     }
   }, [whatsappCode, dispatch])
+
+  if (isLoading || isLoadingWhatsappCode) {
+    SweetAlert.fire({
+      icon: 'warning',
+      text: `Enviando solicitud...`,
+      showCancelButton: false,
+      showConfirmButton: false,
+    })
+  }
 
   return (
     <div>
