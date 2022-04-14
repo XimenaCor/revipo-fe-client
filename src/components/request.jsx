@@ -142,6 +142,7 @@ export const Request = (props) => {
         cancelButtonText: 'Cancelar Todo',
         confirmButtonText: 'Comparar',
         showLoaderOnConfirm: true,
+        allowOutsideClick: false,
         preConfirm: (whatcode) => {
           if (whatsappCode === whatcode) {
             dispatch(solicitudActions.createSolicitudRequest({ values }));
@@ -172,6 +173,7 @@ export const Request = (props) => {
       text: `Enviando solicitud...`,
       showCancelButton: false,
       showConfirmButton: false,
+      allowOutsideClick: false
     })
   }
 

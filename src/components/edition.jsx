@@ -33,6 +33,10 @@ export const Edition = (props) => {
     (state) => state.solicitud.isLoadingWhatsappCode
   )
 
+  const isLoading = useSelector(
+    (state) => state.solicitud.isLoading
+  )
+
   const error = useSelector(
     (state) => state.solicitud.error
   )
@@ -137,6 +141,7 @@ export const Edition = (props) => {
         cancelButtonText: 'Cancelar Todo',
         confirmButtonText: 'Comparar',
         showLoaderOnConfirm: true,
+        allowOutsideClick: false,
         preConfirm: (whatcode) => {
           if (whatsappCode === whatcode) {
             dispatch(solicitudActions.updateSolicitudRequest({ values }));
@@ -151,6 +156,25 @@ export const Edition = (props) => {
       * {file.path} - {file.size} bytes
     </li>
   ));
+
+  React.useEffect(() => {
+    if (whatsappCode !== null) {
+      setTimeout(() => {
+        dispatch(solicitudActions.clearWhatsappCode())
+      }, 20000);
+      
+    }
+  }, [whatsappCode, dispatch])
+
+  if (isLoading || isLoadingWhatsappCode) {
+    SweetAlert.fire({
+      icon: 'warning',
+      text: `Enviando solicitud...`,
+      showCancelButton: false,
+      showConfirmButton: false,
+      allowOutsideClick: false
+    })
+  }
 
   return (
     <div>

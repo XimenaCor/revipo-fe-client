@@ -23,10 +23,10 @@ export const Solicitud = (props) => {
       cancelButtonText: 'Cancelar',
       confirmButtonText: 'Buscar',
       showLoaderOnConfirm: true,
+      allowOutsideClick: false,
       preConfirm: (solCod) => {
         return dispatch(solicitudActions.verifySolicitudStateRequest(solCod))
       },
-      allowOutsideClick: () => !Swal.isLoading()
     })
   }
 
