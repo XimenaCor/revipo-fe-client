@@ -169,7 +169,7 @@ hr {
   font-family: "Raleway", sans-serif;
   text-transform: uppercase;
   color: #fff;
-  background-color: #5ca9fb;
+  background-color: #027F97;
   /* background-image: linear-gradient(to right, #5ca9fb 0%, #6372ff 100%); */
   background-image: linear-gradient(to left, #1C1D3B 0%, #027F97 100%);
   padding: 14px 34px;
@@ -188,7 +188,7 @@ hr {
 .btn-custom.active {
   color: #fff;
   background-image: none;
-  background-color: #6372ff;
+  background-color: #1C1D3B;
 }
 .btn:active,
 .btn.active {

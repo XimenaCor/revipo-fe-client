@@ -1,4 +1,23 @@
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import Swal from 'sweetalert2'
+import { QrReader } from 'react-qr-reader';
+
+import { solicitudActions } from '../redux/solicitud/actions'
+
 export const Header = (props) => {
+  const [visible, setVisible] = React.useState(false)
+  const [data, setData] = React.useState('');
+
+  const handleVerification = () => {
+    setVisible(true)
+  }
+
+  const handleScanner = () => {
+    setVisible(true);
+    setData('')
+  }
+
   return (
     <header id='header'>
       <div className='intro'>
@@ -6,18 +25,60 @@ export const Header = (props) => {
           <div className='container'>
             <div className='row'>
               <div className='col-md-8 col-md-offset-2 intro-text'>
-                <h1 style={{ paddingTop: '100px', paddingBottom: '100px'}}>
+                <h1 style={{ paddingTop: '100px', paddingBottom: '100px' }}>
                   {/* {props.data ? props.data.title : 'Loading'} */}
-                  <span></span>
+                  {/* <span></span> */}
                 </h1>
                 {/* <p>{props.data ? props.data.paragraph : 'Loading'}</p> */}
-                {/* <a
-                  href='#features'
-                  className='btn btn-custom btn-lg page-scroll'
-                >
-                  Requisitos
-                </a>{' '} */}
+                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onClick={handleVerification}>
+                  VERIFICAR ROSETA
+                </button>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">Verificación de Roseta</h5>
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+            <div>
+            {
+              !visible ? (
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '269px', backgroundColor: '#e0e0e0' }}>
+                  <button style={{ fontSize: '20px' }} onClick={handleScanner}>Scannear QR</button>
+                </div>
+              ) : (
+                <div>
+
+                  <QrReader
+                    scanDelay={300}
+                    onResult={(result, error) => {
+                      if (!!result) {
+                        setData(result?.text);
+                        setVisible(false)
+                      }
+
+                      // if (!!error) {
+                      //   console.info(error);
+                      // }
+                    }}
+                    style={{ width: '100%' }}
+                  />
+                </div>
+              )
+            }
+                </div>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-primary">Save changes</button>
             </div>
           </div>
         </div>
