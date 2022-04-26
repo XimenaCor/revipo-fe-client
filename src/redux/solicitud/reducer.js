@@ -5,7 +5,8 @@ import {
   uploadFilesTypes,
   updateSolicitudTypes,
   renewalSolicitudTypes,
-  sendWhatsappCodeTypes
+  sendWhatsappCodeTypes,
+  readRosetaTypes
 } from './constants'
 
 const initialState = {
@@ -35,7 +36,9 @@ const initialState = {
   solicitudRes: null,
   solicitudState: null,
   whatsappCode: null,
+  rosetaInfo: null,
   isLoadingWhatsappCode: false,
+  isLoadingRoseta: false,
   isLoading: false,
   error: ''
 };
@@ -101,6 +104,11 @@ const solicitudReducer = (
       return {
         ...state,
         whatsappCode: initialState.whatsappCode,
+      };
+    case solicitudTypes.CLEAR_ROSETA_INFO:
+      return {
+        ...state,
+        rosetaInfo: initialState.rosetaInfo,
       };
 
     case uploadFilesTypes.REQUEST:
@@ -174,6 +182,26 @@ const solicitudReducer = (
       return {
         ...state,
         isLoadingWhatsappCode: false,
+        error: payload,
+      };
+
+    case readRosetaTypes.REQUEST:
+      return {
+        ...state,
+        rosetaInfo: null,
+        isLoadingRoseta: true,
+        error: '',
+      };
+    case readRosetaTypes.SUCCESS:
+      return {
+        ...state,
+        rosetaInfo: payload,
+        isLoadingRoseta: false,
+      };
+    case readRosetaTypes.FAILURE:
+      return {
+        ...state,
+        isLoadingRoseta: false,
         error: payload,
       };
 

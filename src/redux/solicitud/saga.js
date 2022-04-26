@@ -9,7 +9,8 @@ import {
   verifySolicitudStateTypes,
   updateSolicitudTypes,
   renewalSolicitudTypes,
-  sendWhatsappCodeTypes
+  sendWhatsappCodeTypes,
+  readRosetaTypes
 } from './constants'
 import services from '../../services';
 
@@ -148,7 +149,28 @@ function* sendWhatsappCode({ payload }) {
     );
     SweetAlert.fire({
       icon: 'error',
-      title: `Ha habido un error en la solicitud.`,
+      title: `Ha habido un error!`,
+      showConfirmButton: false,
+      timer: 5000
+    })
+  }
+}
+
+function* readRoseta({ payload }) {
+  try {
+    const res = yield call(
+      [services.solicitud, 'readRoseta'],
+      payload,
+    );
+    yield put(solicitudActions.readRosetaSuccess(res.data));
+  } catch (err) {
+    console.error('function*readRoseta -> err', err);
+    yield put(
+      solicitudActions.readRosetaFailure(err.message),
+    );
+    SweetAlert.fire({
+      icon: 'error',
+      title: `Ha habido un error!`,
       showConfirmButton: false,
       timer: 5000
     })
@@ -162,6 +184,7 @@ function* solicitudSaga() {
   yield takeLatest(updateSolicitudTypes.REQUEST, updateSolicitud);
   yield takeLatest(renewalSolicitudTypes.REQUEST, renewalSolicitud);
   yield takeLatest(sendWhatsappCodeTypes.REQUEST, sendWhatsappCode);
+  yield takeLatest(readRosetaTypes.REQUEST, readRoseta);
 }
 
 export default solicitudSaga;

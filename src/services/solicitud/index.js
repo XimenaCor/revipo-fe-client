@@ -69,6 +69,16 @@ class Solicitud {
     }
   };
 
+  readRoseta = async (codRoseta) => {
+    try {
+      const res = await this.axios.get(`/solicitudes/solicitud/verification/roseta/vigente/byCode/${codRoseta}`);
+      return res;
+    } catch (err) {
+      console.error('Solicitud -> readRoseta -> err', err);
+      throw err;
+    }
+  };
+
 }
 
 export default Solicitud;

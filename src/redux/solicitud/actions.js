@@ -5,7 +5,8 @@ import {
   uploadFilesTypes,
   updateSolicitudTypes,
   renewalSolicitudTypes,
-  sendWhatsappCodeTypes
+  sendWhatsappCodeTypes,
+  readRosetaTypes
 } from './constants';
 
 export const solicitudActions = {
@@ -18,6 +19,9 @@ export const solicitudActions = {
   }),
   clearWhatsappCode: () => ({
     type: solicitudTypes.CLEAR_WHATSAPP_CODE,
+  }),
+  clearRosetaInfo: () => ({
+    type: solicitudTypes.CLEAR_ROSETA_INFO,
   }),
 
   createSolicitudRequest: (payload) => ({
@@ -95,6 +99,19 @@ export const solicitudActions = {
   }),
   sendWhatsappCodeFailure: (err) => ({
     type: sendWhatsappCodeTypes.FAILURE,
+    payload: err,
+  }),
+
+  readRosetaRequest: (payload) => ({
+    type: readRosetaTypes.REQUEST,
+    payload,
+  }),
+  readRosetaSuccess: (payload) => ({
+    type: readRosetaTypes.SUCCESS,
+    payload,
+  }),
+  readRosetaFailure: (err) => ({
+    type: readRosetaTypes.FAILURE,
     payload: err,
   }),
 };
