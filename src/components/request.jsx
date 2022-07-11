@@ -132,8 +132,8 @@ export const Request = (props) => {
   React.useEffect(() => {
     if (!isLoadingWhatsappCode && !error && whatsappCode && values) {
       Swal.fire({
-        title: 'Se le ha enviado un codigo de verificacion al whatsapp de su telefono.',
-        text: 'Introduzca el codigo recibido para concluir con el registro',
+        title: 'Se le ha enviado un codigo de verificación al whatsapp de su teléfono.',
+        text: 'Introduzca el código recibido para concluir con el registro',
         input: 'text',
         inputAttributes: {
           autocapitalize: 'off'
@@ -190,21 +190,24 @@ export const Request = (props) => {
                   info='Info: Procure llenar la solicitud con un número telefonico que tenga el servicio de whatsapp activado.' />
               </div>
               <form
-                onChange={handleChange}
+                // onChange={handleChange}
                 onSubmit={handleSubmit(onSubmit)}
               >
-                <h5>Datos de la Solicitud</h5>
+                <h5>Datos de la Solicitud de Autorización</h5>
                 <div className='row'>
                   <div className='col-md-8'>
                     <div className='form-group'>
-                      <label>Tipo de Solicitud</label>
+                      <label>Tipo de Autorización</label>
                       <select
                         name="tipoSolicitud" defaultValue={solicitudForm.tipoSolicitud} {...register('tipoSolicitud', { required: true })}
                         className='form-control text-uppercase'
                       >
-                        <option value="PERSONA NATURAL">PERSONA NATURAL</option>
-                        <option value="VEHICULO OFICIAL">VEHÍCULOS OFICIALES, DIPLOMÁTICOS, CONSULARES Y DE ORGANISMO INTERNACIONALES</option>
-                        <option value="PERSONA JURIDICA">PERSONA JURÍDICA</option>
+                        <option id = 'ambulancias' value="AMBULANCIAS">AMBULANCIAS</option>
+                        <option id = 'vehiculooficial' value="VEHICULOS OFICIALES">VEHÍCULOS OFICIALES</option>
+                        <option id = 'vehiculoautoridades' value="VEHICULOS PARTICULARES AUTORIDADES">VEHÍCULOS PARTICULARES DE AUTORIDADES Y EX AUTORIDADES</option>
+                        <option id = 'vidriosfabrica' value="VEHICULOS CON VIDRIOS OSCURECIDOS DE FABRICA">VEHÍCULOS CON VIDRIOS OSCURECIDOS DE FÁBRICA</option>
+                        <option id = 'vehiculojudicial' value="VEHICULOS POR ORDEN JUDICIAL">VEHÍCULOS POR ORDEN JUDICIAL</option>
+                        <option id = 'vehiculosalud' value="VEHICULOS POR RAZONES DE SALUD">VEHÍCULOS POR RAZONES DE SALUD</option>
                       </select>
                       {
                         errors.tipoSolicitud && (
@@ -239,7 +242,9 @@ export const Request = (props) => {
                     </div>
                   </div>
                 </div>
-                <h5>Solicitante</h5>
+
+
+                {/* <h5>Solicitante</h5>
                 <div className='row'>
                   <div className='col-md-4'>
                     <div className='form-group'>
@@ -390,9 +395,9 @@ export const Request = (props) => {
                       <p className='help-block text-danger'></p>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
-                <h5>Vehiculo</h5>
+                {/* <h5>Vehiculo</h5>
                 <div className='row'>
                   <div className='col-md-3'>
                     <div className='form-group'>
@@ -504,7 +509,7 @@ export const Request = (props) => {
                       <p className='help-block text-danger'></p>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className='row' style={{ borderColor: '#EEF4F6' }}>
                   <div className='col-md-12'>
                     <div {...getRootProps({ className: 'dropzone' })}>
