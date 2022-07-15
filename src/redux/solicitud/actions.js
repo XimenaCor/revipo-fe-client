@@ -6,7 +6,8 @@ import {
   updateSolicitudTypes,
   renewalSolicitudTypes,
   sendWhatsappCodeTypes,
-  readRosetaTypes
+  readRosetaTypes,
+  updateRequestType
 } from './constants';
 
 export const solicitudActions = {
@@ -114,4 +115,18 @@ export const solicitudActions = {
     type: readRosetaTypes.FAILURE,
     payload: err,
   }),
+
+  updateRequestTypeRequest: (payload) => ({
+    type: updateRequestType.REQUEST,
+    payload,
+  }),
+  updateRequestTypeSuccess: (payload) => ({
+    type: updateRequestType.SUCCESS,
+    payload,
+  }),
+  updateRequestTypeFailure: (err) => ({
+    type: updateRequestType.FAILURE,
+    payload: err,
+  }),
 };
+

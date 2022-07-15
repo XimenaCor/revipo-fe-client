@@ -6,7 +6,8 @@ import {
   updateSolicitudTypes,
   renewalSolicitudTypes,
   sendWhatsappCodeTypes,
-  readRosetaTypes
+  readRosetaTypes,
+  updateRequestType
 } from './constants'
 
 const initialState = {
@@ -31,7 +32,12 @@ const initialState = {
     industria: null,
     tipoSolicitud: null,
     departamento: null,
-    fechaSolicitud: null
+    fechaSolicitud: null,
+    roseta: null,
+    institucion: null,
+    cargo: null,
+    justificacion: null,
+    
   },
   solicitudRes: null,
   solicitudState: null,
@@ -77,6 +83,9 @@ const solicitudReducer = (
         isLoading: true,
         error: '',
       };
+
+
+
     case verifySolicitudStateTypes.SUCCESS:
       return {
         ...state,
@@ -95,6 +104,9 @@ const solicitudReducer = (
         ...state,
         solicitudForm: payload,
       };
+
+
+      
     case solicitudTypes.CLEAR_SOLICITUD_FORM:
       return {
         ...state,
@@ -204,6 +216,26 @@ const solicitudReducer = (
         isLoadingRoseta: false,
         error: payload,
       };
+
+      case updateRequestType.REQUEST:
+        return {
+          ...state,
+          solicitudState: null,
+          isLoadingRoseta: true,
+          error: '',
+        };
+      case updateRequestType.SUCCESS:
+        return {
+          ...state,
+          rosetaInfo: payload,
+          isLoadingRoseta: false,
+        };
+      case updateRequestType.FAILURE:
+        return {
+          ...state,
+          isLoadingRoseta: false,
+          error: payload,
+        };
 
     default:
       return state;

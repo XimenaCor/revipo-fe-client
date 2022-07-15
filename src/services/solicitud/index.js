@@ -64,6 +64,7 @@ class Solicitud {
       const res = await this.axios.get(`/externals/message/${data.email}/${data.telefono}`);
       return res;
     } catch (err) {
+      console.log(err);
       console.error('Solicitud -> sendWhatsappCode -> err', err);
       throw err;
     }

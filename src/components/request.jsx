@@ -20,6 +20,9 @@ export const Request = (props) => {
   const solicitudForm = useSelector(
     (state) => state.solicitud.solicitudForm
   );
+  const estadoSelect = useSelector((state) => state.solicitud.solicitudForm.tipoSolicitud)
+
+console.log(estadoSelect);
 
   const solicitudRes = useSelector(
     (state) => state.solicitud.solicitudRes
@@ -190,7 +193,7 @@ export const Request = (props) => {
                   info='Info: Procure llenar la solicitud con un número telefonico que tenga el servicio de whatsapp activado.' />
               </div>
               <form
-                // onChange={handleChange}
+                onChange={handleChange}
                 onSubmit={handleSubmit(onSubmit)}
               >
                 <h5>Datos de la Solicitud de Autorización</h5>
@@ -199,15 +202,17 @@ export const Request = (props) => {
                     <div className='form-group'>
                       <label>Tipo de Autorización</label>
                       <select
-                        name="tipoSolicitud" defaultValue={solicitudForm.tipoSolicitud} {...register('tipoSolicitud', { required: true })}
+                        onChange={()=> dispatch()} name="tipoSolicitud" defaultValue={solicitudForm.tipoSolicitud} {...register('tipoSolicitud', { required: true })}
                         className='form-control text-uppercase'
                       >
-                        <option id = 'ambulancias' value="AMBULANCIAS">AMBULANCIAS</option>
-                        <option id = 'vehiculooficial' value="VEHICULOS OFICIALES">VEHÍCULOS OFICIALES</option>
-                        <option id = 'vehiculoautoridades' value="VEHICULOS PARTICULARES AUTORIDADES">VEHÍCULOS PARTICULARES DE AUTORIDADES Y EX AUTORIDADES</option>
-                        <option id = 'vidriosfabrica' value="VEHICULOS CON VIDRIOS OSCURECIDOS DE FABRICA">VEHÍCULOS CON VIDRIOS OSCURECIDOS DE FÁBRICA</option>
-                        <option id = 'vehiculojudicial' value="VEHICULOS POR ORDEN JUDICIAL">VEHÍCULOS POR ORDEN JUDICIAL</option>
-                        <option id = 'vehiculosalud' value="VEHICULOS POR RAZONES DE SALUD">VEHÍCULOS POR RAZONES DE SALUD</option>
+                          <option defaultValue = 'blanco' value="blanco">Por favor seleccione una de las opciones de esta lista...</option>
+                          <option value="AMBULANCIAS">AMBULANCIAS</option>
+                          <option value="VEHICULOS OFICIALES">VEHÍCULOS OFICIALES</option>
+                          <option value="VEHICULOS PARTICULARES AUTORIDADES">VEHÍCULOS PARTICULARES DE AUTORIDADES Y EX AUTORIDADES</option>
+                          <option value="VEHICULOS CON VIDRIOS OSCURECIDOS DE FABRICA">VEHÍCULOS CON VIDRIOS OSCURECIDOS DE FÁBRICA</option>
+                          <option value="VEHICULOS POR ORDEN JUDICIAL">VEHÍCULOS POR ORDEN JUDICIAL</option>
+                          <option value="VEHICULOS POR RAZONES DE SALUD">VEHÍCULOS POR RAZONES DE SALUD</option>
+                          <option value="PUBLICO">REGISTRO DE VIDRIOS OSCURECIDOS PARA VEHÍCULOS DEL TRANSPORTE PÚBLICO</option>
                       </select>
                       {
                         errors.tipoSolicitud && (
@@ -242,9 +247,7 @@ export const Request = (props) => {
                     </div>
                   </div>
                 </div>
-
-
-                {/* <h5>Solicitante</h5>
+                <h5>Solicitante</h5>
                 <div className='row'>
                   <div className='col-md-4'>
                     <div className='form-group'>
@@ -380,7 +383,7 @@ export const Request = (props) => {
                       <p className='help-block text-danger'></p>
                     </div>
                   </div>
-                  <div className='col-md-8'>
+                  <div className='col-md-4'>
                     <div className='form-group'>
                       <label>Dirección domiciliaria </label>
                       <input
@@ -395,122 +398,617 @@ export const Request = (props) => {
                       <p className='help-block text-danger'></p>
                     </div>
                   </div>
-                </div> */}
+  {/* SWITCH PARA CAMPOS EXTRAS */}
+  {(() => {
+        switch (estadoSelect){
+        case 'AMBULANCIAS':
+            return (
+    <div className='container'>
+    <div className='row'>
+    <div className='col-md-4'>
+      <div className='form-group'>
+      <label>Nro. Roseta o Resolución </label>
+      <input
+      name="roseta" defaultValue={solicitudForm.roseta} {...register('roseta', { required: true })}
+      className='form-control text-uppercase'
+      />
+      {
+      errors.roseta && (
+      <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+      )
+            }
+      <p className='help-block text-danger'></p>
+      </div>
+    </div>
+    </div>
 
-                {/* <h5>Vehiculo</h5>
-                <div className='row'>
-                  <div className='col-md-3'>
+    </div>
+		)
+        case 'VEHICULOS OFICIALES':
+          return (
+            <div className='container'>
+            <div className='row'>
+            <div className='col-md-6'>
+            <div className='form-group'>
+            <label>Institución</label>
+            <input
+            name="institucion" defaultValue={solicitudForm.institucion} {...register('institucion', { required: true })}
+            className='form-control text-uppercase'
+            />
+            {
+            errors.institucion && (
+            <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+            )
+                  }
+            <p className='help-block text-danger'></p>
+            </div>
+            </div>
+                  <div className='col-md-6'>
                     <div className='form-group'>
-                      <label>Placa </label>
-                      <input
-                        name="placa" defaultValue={solicitudForm.placa} {...register('placa', { required: true })}
-                        className='form-control text-uppercase'
-                        pattern="[0-9]{4}[A-Z]{3}"
-                        placeholder='EJEM: 4321ABC'
-                      />
+                      <label>Cargo </label>
+                      <select name="cargo" defaultValue={solicitudForm.cargo} {...register('cargo', { required: true })}
+                        className="form-control text-uppercase" type="select"
+                      >
+                        <option value="PRESIDENTE DEL ESTADO PLURINACIONAL">PRESIDENTE DEL ESTADO PLURINACIONAL</option>
+                        <option value="VICEPRESIDENTE DEL ESTADO PLURINACIONAL">VICEPRESIDENTE DEL ESTADO PLURINACIONAL</option>
+                        <option value="MINISTROS DE ESTADO">MINISTROS DE ESTADO</option>
+                        <option value="PRESIDENTE DE LA CÁMARA DE SENADORES">PRESIDENTE DE LA CÁMARA DE SENADORES</option>
+                        <option value="PRESIDENTE DE LA CÁMARA DE DIPUTADOS">PRESIDENTE DE LA CÁMARA DE DIPUTADOS</option>
+                        <option value="SENADORES">SENADORES</option>
+                        <option value="DIPUTADOS">DIPUTADOS</option>
+                        <option value="MAGISTRADOS DEL TRIBUNAL CONSTITUCIONAL PLURINACIONAL">MAGISTRADOS DEL TRIBUNAL CONSTITUCIONAL PLURINACIONAL</option>
+                        <option value="MAGISTRADOS DEL TRIBUNAL SUPREMO DE JUSTICIA">MAGISTRADOS DEL TRIBUNAL SUPREMO DE JUSTICIA</option>
+                        <option value="PRESIDENTES DE LOS TRIBUNALES DEPARTAMENTALES DE JUSTICIA">PRESIDENTES DE LOS TRIBUNALES DEPARTAMENTALES DE JUSTICIA</option>
+                        <option value="MAGISTRADOS DEL TRIBUNAL AGROAMBIENTAL">MAGISTRADOS DEL TRIBUNAL AGROAMBIENTAL</option>
+                        <option value="CONSEJEROS DEL CONSEJO DE LA MAGISTRATURA">CONSEJEROS DEL CONSEJO DE LA MAGISTRATURA</option>
+                        <option value="VOCALES DEL TRIBUNAL SUPREMO ELECTORAL">VOCALES DEL TRIBUNAL SUPREMO ELECTORAL</option>
+                        <option value="PRESIDENTES DE LOS TRIBUNALES ELECTORALES DEPARTAMENTALES">PRESIDENTES DE LOS TRIBUNALES ELECTORALES DEPARTAMENTALES</option>
+                        <option value="CONTRALOR GENERAL DEL ESTADO">CONTRALOR GENERAL DEL ESTADO</option>
+                        <option value="FISCAL GENERAL DEL ESTADO">FISCAL GENERAL DEL ESTADO</option>
+                        <option value="FISCALES DEPARTAMENTALES">FISCALES DEPARTAMENTALES</option>
+                        <option value="PROCURADOR GENERAL DEL ESTADO">PROCURADOR GENERAL DEL ESTADO</option>
+                        <option value="DEFENSOR DEL PUEBLO">DEFENSOR DEL PUEBLO</option>
+                        <option value="GOBERNADORES DE LOS GOBIERNOS AUTÓNOMOS DEPARTAMENTALES">GOBERNADORES DE LOS GOBIERNOS AUTÓNOMOS DEPARTAMENTALES</option>
+                        <option value="PRESIDENTES DE LAS ASAMBLEAS LEGISLATIVAS DEPARTAMENTALES">PRESIDENTES DE LAS ASAMBLEAS LEGISLATIVAS DEPARTAMENTALES</option>
+                        <option value="ALCALDES DE LOS GOBIERNOS AUTÓNOMOS MUNICIPALES">ALCALDES DE LOS GOBIERNOS AUTÓNOMOS MUNICIPALES</option>
+                        <option value="PRESIDENTES DE LOS CONCEJOS MUNICIPALES">PRESIDENTES DE LOS CONCEJOS MUNICIPALES</option>
+                      </select>
                       {
-                        errors.placa && (
+                        errors.cargo && (
                           <span style={{ color: "tomato" }}>Este campo es requerido!</span>
                         )
                       }
                       <p className='help-block text-danger'></p>
                     </div>
                   </div>
-                  <div className='col-md-3'>
-                    <div className='form-group'>
-                      <label>Color</label>
-                      <input
-                        name="color" defaultValue={solicitudForm.color} {...register('color', { required: true })}
-                        className='form-control text-uppercase'
-                      />
-                      {
-                        errors.color && (
-                          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
-                        )
-                      }
-                      <p className='help-block text-danger'></p>
-                    </div>
                   </div>
-                  <div className='col-md-3'>
-                    <div className='form-group'>
-                      <label>Año</label>
-                      <input
-                        name="anio" defaultValue={solicitudForm.anio} {...register('anio', { required: true })}
-                        className='form-control text-uppercase' type="number" min="1900" max={actualYear.getFullYear()}
-                      />
-                      {
-                        errors.anio && (
-                          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
-                        )
-                      }
-                      <p className='help-block text-danger'></p>
-                    </div>
-                  </div>
-                  <div className='col-md-3'>
-                    <div className='form-group'>
-                      <label>Marca</label>
-                      <input
-                        name="marca" defaultValue={solicitudForm.marca} {...register('marca', { required: true })}
-                        className='form-control text-uppercase'
-                      />
-                      {
-                        errors.marca && (
-                          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
-                        )
-                      }
-                      <p className='help-block text-danger'></p>
-                    </div>
-                  </div>
+            </div>
+    )
+        case 'VEHICULOS PARTICULARES AUTORIDADES':
+          return (
+            <div className='container'>
+            <div className='row'>
+            <div className='col-md-6'>
+              <div className='form-group'>
+                <label>Institución</label>
+                <input
+                  name="institucion" defaultValue={solicitudForm.institucion} {...register('institucion', { required: true })}
+                  className='form-control text-uppercase'
+                />
+                {
+                  errors.institucion && (
+                    <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+                  )
+                }
+                <p className='help-block text-danger'></p>
+              </div>
+            </div>
+            <div className='col-md-6'>
+              <div className='form-group'>
+                <label>Cargo </label>
+                <select name="cargo" defaultValue={solicitudForm.cargo} {...register('cargo', { required: true })}
+                  className="form-control text-uppercase" type="select"
+                >
+                  <option value="PRESIDENTE DEL ESTADO PLURINACIONAL">PRESIDENTE DEL ESTADO PLURINACIONAL</option>
+                  <option value="VICEPRESIDENTE DEL ESTADO PLURINACIONAL">VICEPRESIDENTE DEL ESTADO PLURINACIONAL</option>
+                  <option value="MINISTROS DE ESTADO">MINISTROS DE ESTADO</option>
+                  <option value="PRESIDENTE DE LA CÁMARA DE SENADORES">PRESIDENTE DE LA CÁMARA DE SENADORES</option>
+                  <option value="PRESIDENTE DE LA CÁMARA DE DIPUTADOS">PRESIDENTE DE LA CÁMARA DE DIPUTADOS</option>
+                </select>
+                {
+                  errors.cargo && (
+                    <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+                  )
+                }
+                <p className='help-block text-danger'></p>
+              </div>
+            </div>
+            </div>
+      </div>
+    )
+        case 'VEHICULOS CON VIDRIOS OSCURECIDOS DE FABRICA':
+          return (
+    <div className='row'>
+    <div className='col-md-4'>
+      <div className='form-group'>
+        <label>Nro. Informe IITCUP </label>
+        <input
+        name="iitcup" defaultValue={solicitudForm.iitcup} {...register('iitcup', { required: true })}
+        className='form-control text-uppercase'
+        />
+        {
+          errors.iitcup && (
+            <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+          )
+        }
+        <p className='help-block text-danger'></p>
+      </div>
+    </div>
+    </div>
+    )
+        case 'VEHICULOS POR ORDEN JUDICIAL':
+          return (
+    <div className='row'>
+    <div className='col-md-4'>
+      <div className='form-group'>
+        <label>Nro. Orden Judicial </label>
+        <input
+        name="judicial" defaultValue={solicitudForm.judicial} {...register('judicial', { required: true })}
+          className='form-control text-uppercase'
+        />
+        {
+          errors.judicial && (
+            <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+          )
+        }
+        <p className='help-block text-danger'></p>
+      </div>
+    </div>
+    </div>
+    )
+        case 'VEHICULOS POR RAZONES DE SALUD':
+          return (
+    <div className='container'>
+    <div className='row'>
+    <div className='col-md-12'>
+    <div className="form-group">
+    <label>Justificación</label>
+    <textarea name="justificacion" className="form-control text-uppercase" 
+    defaultValue={solicitudForm.justificacion} {...register('justificacion', { required: true })} rows="3"></textarea>
+          </div>
+    </div>
+    </div>
+    </div>
+    )
+        case 'PUBLICO':
+          return (
+    <div className='row'>
+    <div className='col-md-4'>
+      <div className='form-group'>
+        <label>Nro. Informe IITCUP </label>
+        <input
+          name="iitcup" defaultValue={solicitudForm.iitcup} {...register('iitcup', { required: true })}
+          className='form-control text-uppercase'
+        />
+        {
+          errors.iitcup && (
+            <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+          )
+        }
+        <p className='help-block text-danger'></p>
+      </div>
+    </div>
+    </div>
+    )    
+    default:
+            return null
+            }
+        })()}
+                
                 </div>
-                <div className='row'>
-                  <div className='col-md-4'>
-                    <div className='form-group'>
-                      <label>Tipo de vehículo</label>
-                      <input
-                        name="tipoVehiculo" defaultValue={solicitudForm.tipoVehiculo} {...register('tipoVehiculo', { required: true })}
-                        className='form-control text-uppercase'
-                      />
-                      {
-                        errors.tipoVehiculo && (
-                          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
-                        )
-                      }
-                      <p className='help-block text-danger'></p>
+<h5>Vehículo</h5>
+{/* sexta fila */}
+<div className='row'>
+  <div className='col-md-3'>
+    <div className='form-group'>
+      <label>Placa </label>
+      <input
+        name="placa" defaultValue={solicitudForm.placa} {...register('placa', { required: true })}
+        className='form-control text-uppercase'
+        pattern="[0-9]{4}[A-Z]{3}"
+        placeholder='EJEM: 4321ABC'
+      />
+      {
+        errors.placa && (
+          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+        )
+      }
+      <p className='help-block text-danger'></p>
+    </div>
+  </div>
+  <div className='col-md-3'>
+    <div className='form-group'>
+      <label>Color</label>
+      <input
+        name="color" defaultValue={solicitudForm.color} {...register('color', { required: true })}
+        className='form-control text-uppercase'
+      />
+      {
+        errors.color && (
+          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+        )
+      }
+      <p className='help-block text-danger'></p>
+    </div>
+  </div>
+  <div className='col-md-3'>
+    <div className='form-group'>
+      <label>Año</label>
+      <input
+        name="anio" defaultValue={solicitudForm.anio} {...register('anio', { required: true })}
+        className='form-control text-uppercase' type="number" min="1900" max={actualYear.getFullYear()}
+      />
+      {
+        errors.anio && (
+          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+        )
+      }
+      <p className='help-block text-danger'></p>
+    </div>
+  </div>
+  <div className='col-md-3'>
+    <div className='form-group'>
+      <label>Marca</label>
+      <input
+        name="marca" defaultValue={solicitudForm.marca} {...register('marca', { required: true })}
+        className='form-control text-uppercase'
+      />
+      {
+        errors.marca && (
+          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+        )
+      }
+      <p className='help-block text-danger'></p>
+    </div>
+  </div>
+</div>
+{/* SWITCH PARA REQUISITOS */}
+    {(() => {
+        switch (estadoSelect){
+        case 'AMBULANCIAS':
+            return (
+<div className='container'>
+<div className='text-center'>
+              <div className='col-md-12' >
+              <table className="Table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Requisitos</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Certificación emitida por el Ministerio de Salud, que acredite la otorgación del Código Único Nacional a la ambulancia o Resolución de habilitación de la ambulancia emitida por el Servicio Departamental de Salud - SEDES correspondiente.</td>
+                    {/* <div style={{ borderColor: '#EEF4F6' }}> */}
+                    <td> 
+                    <div {...getRootProps({ className: 'dropzone' })}>
+                        <input {...getInputProps()} />
+                        <p className="text-decoration-underline fst-italic" style={{ cursor: 'pointer', fontSize: '20px', color: 'black', textDecoration: 'underline' }}>AGREGAR ARCHIVOS ESCANEADOS</p>
                     </div>
+                    </td>
+                    {/* </div> */}
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Documento que acredite la representación del solicitante, para personas jurídicas.</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Documento que acredite la representación del solicitante, para personas jurídicas.</td>
+                </tr>
+                <tr>
+                <td></td>
+                  <td colSpan={3}> {filesList}</td>
+                </tr>
+              </tbody>
+              </table>
+
+              </div>
+              </div>
+              </div>
+              // </div>
+        )
+        case 'VEHICULOS OFICIALES':
+          return (
+        <div className='container'>
+        <div className='text-center'>
+        {/* <div className='row'> */}
+            <div className='col-md-12' >
+            <table className="Table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Requisitos</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Documento que acredite la representación legal de la entidad solicitante.</td>
+                  {/* <div style={{ borderColor: '#EEF4F6' }}> */}
+                  <td> 
+                  <div {...getRootProps({ className: 'dropzone' })}>
+                      <input {...getInputProps()} />
+                      <p className="text-decoration-underline fst-italic" style={{ cursor: 'pointer', fontSize: '20px', color: 'black', textDecoration: 'underline' }}>AGREGAR ARCHIVOS ESCANEADOS</p>
                   </div>
-                  <div className='col-md-4'>
-                    <div className='form-group'>
-                      <label>Industria</label>
-                      <input
-                        name="industria" defaultValue={solicitudForm.industria} {...register('industria', { required: true })}
-                        className='form-control text-uppercase'
-                      />
-                      {
-                        errors.industria && (
-                          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
-                        )
-                      }
-                      <p className='help-block text-danger'></p>
+                  </td>
+                  {/* </div> */}
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
+              </tr>
+              <tr>
+              <td></td>
+                <td colSpan={3}> {filesList}</td>
+              </tr>
+            </tbody>
+            </table>
+
+            </div>
+            </div>
+            </div>
+            // </div>
+        )
+        case 'VEHICULOS PARTICULARES AUTORIDADES':
+            return (
+<div className='container'>
+<div className='text-center'>
+    {/* <div className='row'> */}
+              <div className='col-md-12' >
+              <table className="Table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Requisitos</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Documento que acredite la designación como autoridad o ex autoridad según corresponda.</td>
+                    {/* <div style={{ borderColor: '#EEF4F6' }}> */}
+                    <td> 
+                    <div {...getRootProps({ className: 'dropzone' })}>
+                        <input {...getInputProps()} />
+                        <p className="text-decoration-underline fst-italic" style={{ cursor: 'pointer', fontSize: '20px', color: 'black', textDecoration: 'underline' }}>AGREGAR ARCHIVOS ESCANEADOS</p>
                     </div>
-                  </div>
-                  <div className='col-md-4'>
-                    <div className='form-group'>
-                      <label>Modelo </label>
-                      <input
-                        name="modelo" defaultValue={solicitudForm.modelo} {...register('modelo', { required: true })}
-                        className='form-control text-uppercase'
-                        placeholder='EJEM: X-TERRA'
-                      />
-                      {
-                        errors.modelo && (
-                          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
-                        )
-                      }
-                      <p className='help-block text-danger'></p>
+                    </td>
+                    {/* </div> */}
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Poder de representación vigente y especifico, si corresponde.</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
+                </tr>
+                <tr>
+                <td></td>
+                  <td colSpan={3}> {filesList}</td>
+                </tr>
+              </tbody>
+              </table>
+
+              </div>
+              </div>
+              </div>
+              // </div>
+        )
+        case 'VEHICULOS CON VIDRIOS OSCURECIDOS DE FABRICA':
+            return (
+<div className='container'>
+<div className='text-center'>
+    {/* <div className='row'> */}
+              <div className='col-md-12' >
+              <table className="Table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Requisitos</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Documento que acredite la representación del solicitante, en caso de personas jurídicas.</td>
+                    {/* <div style={{ borderColor: '#EEF4F6' }}> */}
+                    <td> 
+                    <div {...getRootProps({ className: 'dropzone' })}>
+                        <input {...getInputProps()} />
+                        <p className="text-decoration-underline fst-italic" style={{ cursor: 'pointer', fontSize: '20px', color: 'black', textDecoration: 'underline' }}>AGREGAR ARCHIVOS ESCANEADOS</p>
                     </div>
+                    </td>
+                    {/* </div> */}
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Poder de representación vigente y especifico, si corresponde.</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Certificado de Antecedentes Policiales de la Fuerza Especial de Lucha Contra el Crimen - FELCC, Fuerza Especial de Lucha Contra el Narcotráfico - FELCN y Transito.</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
+                </tr>
+
+                <tr>
+                <td></td>
+                  <td colSpan={3}> {filesList}</td>
+                </tr>
+              </tbody>
+              </table>
+
+              </div>
+              </div>
+              </div>
+              // </div>
+        )
+        case 'VEHICULOS POR ORDEN JUDICIAL':
+            return (
+<div className='container'>
+<div className='text-center'>
+    {/* <div className='row'> */}
+              <div className='col-md-12' >
+              <table className="Table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Requisitos</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Orden Judicial en los procesos donde se investiguen hechos de violencia, en la cual se ordene el uso de vidrios oscurecidos o polarizados, identificando la placa de circulación del vehículo al que se otorgará la autorización.</td>
+                    {/* <div style={{ borderColor: '#EEF4F6' }}> */}
+                    <td> 
+                    <div {...getRootProps({ className: 'dropzone' })}>
+                        <input {...getInputProps()} />
+                        <p className="text-decoration-underline fst-italic" style={{ cursor: 'pointer', fontSize: '20px', color: 'black', textDecoration: 'underline' }}>AGREGAR ARCHIVOS ESCANEADOS</p>
+                    </div>
+                    </td>
+                    {/* </div> */}
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
+                </tr>
+                <tr>
+                <td></td>
+                  <td colSpan={3}> {filesList}</td>
+                </tr>
+              </tbody>
+              </table>
+
+              </div>
+              </div>
+              </div>
+              // </div>
+        )
+        case 'VEHICULOS POR RAZONES DE SALUD':
+            return (
+<div className='container'>
+<div className='text-center'>
+    {/* <div className='row'> */}
+              <div className='col-md-12 row' >
+              <div className='col-md-10' >
+              <table className="Table ">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Requisitos</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Certificado médico emitido por un médico del ente Gestor de Salud o por los establecimientos públicos de salud, que expresamente contenga la recomendación al paciente de evitar la exposición a la luz solar, debido a una condición médica de acuerdo a la patología presentada.</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Cuando el paciente no sea el propietario del vehículo, se deberá llenar un formulario de declaración jurada identificando el vehículo que el paciente utiliza.</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
+                </tr>
+                <tr>
+                <td></td>
+                  <td colSpan={3}> {filesList}</td>
+                </tr>
+              </tbody>
+              </table>
+              </div>
+              <div className='col-md-2 align-self-center'>
+              <div className='bg-primary' {...getRootProps({ className: 'dropzone' })}>
+                        <input {...getInputProps()} />
+                        <p className="text-decoration-underline fst-italic" style={{ cursor: 'pointer', fontSize: '20px', color: 'black', textDecoration: 'underline' }}>AGREGAR ARCHIVOS ESCANEADOS</p>
+                    </div>
+              </div>
+
+              </div>
+              </div>
+              </div>
+              // </div>
+        )
+        case 'PUBLICO':
+          return (
+        <div className='container'>
+        <div className='text-center'>
+        {/* <div className='row'> */}
+            <div className='col-md-12' >
+            <table className="Table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Requisitos</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Licencia de Conducir vigente.</td>
+                  {/* <div style={{ borderColor: '#EEF4F6' }}> */}
+                  <td> 
+                  <div {...getRootProps({ className: 'dropzone' })}>
+                      <input {...getInputProps()} />
+                      <p className="text-decoration-underline fst-italic" style={{ cursor: 'pointer', fontSize: '20px', color: 'black', textDecoration: 'underline' }}>AGREGAR ARCHIVOS ESCANEADOS</p>
                   </div>
-                </div> */}
-                <div className='row' style={{ borderColor: '#EEF4F6' }}>
+                  </td>
+                  {/* </div> */}
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
+              </tr>
+              <tr>
+              <td></td>
+                <td colSpan={3}> {filesList}</td>
+              </tr>
+            </tbody>
+            </table>
+
+            </div>
+            </div>
+            </div>
+            // </div>
+        )
+        default:
+          return null
+          }
+          })()}
+
+
+
+
+
+
+                {/* </div> */}
+
+                {/* <div className='row' style={{ borderColor: '#EEF4F6' }}>
                   <div className='col-md-12'>
                     <div {...getRootProps({ className: 'dropzone' })}>
                       <input {...getInputProps()} />
@@ -521,7 +1019,7 @@ export const Request = (props) => {
                       <ul>{filesList}</ul>
                     </aside>
                   </div>
-                </div>
+                </div> */}
 
                 <div id='success'></div>
                 <button type='submit' className='btn btn-custom btn-lg'>

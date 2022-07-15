@@ -55,7 +55,7 @@ export const Solicitud = (props) => {
             <div className='contact-item'>
               <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'left' }}>
                 <p>¿Ya realizo su solicitud?</p>
-                <p className="text-decoration-underline fst-italic" onClick={handleVerification} style={{ cursor: 'pointer', color: '#D36FDD', textDecoration: 'underline', paddingLeft: '5px' }}>Verifique aqui el estado de la misma.</p>
+                <p className="text-decoration-underline fst-italic" onClick={handleVerification} style={{ cursor: 'pointer', color: '#D36FDD', textDecoration: 'underline', paddingLeft: '5px' }}>Realizar seguimiento a su solicitud.</p>
               </div>
             </div>
           </div>
