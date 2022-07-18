@@ -39,22 +39,22 @@ export const Solicitud = (props) => {
               <Tabs>
                 <TabList>
                   <Tab>NUEVO TRAMITE</Tab>
-                  <Tab>EDICIÓN</Tab>
+                  {/* <Tab>EDICIÓN</Tab> */}
                 </TabList>
 
                 <TabPanel>
                   <Request />
                 </TabPanel>
-                <TabPanel>
+                {/* <TabPanel>
                   <Edition />
-                </TabPanel>
+                </TabPanel> */}
               </Tabs>
             </div>
           </div>
           <div className='col-md-12'>
             <div className='contact-item'>
               <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'left' }}>
-                <p>¿Ya realizo su solicitud?</p>
+                <p>¿Ya realizó su solicitud?</p>
                 <p className="text-decoration-underline fst-italic" onClick={handleVerification} style={{ cursor: 'pointer', color: '#D36FDD', textDecoration: 'underline', paddingLeft: '5px' }}>Realizar seguimiento a su solicitud.</p>
               </div>
             </div>

@@ -68,32 +68,17 @@
     {
       "icon": "fa fa-file",
       "name": "Resolución Ministerial",
+      "text": "Descargue la resolución bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
+    },
+    {
+      "icon": "fa fa-file",
+      "name": "Manual de Solicitud",
       "text": "Descargue la resolucion bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
     },
     {
       "icon": "fa fa-file",
-      "name": "Manual de Solicitud (Primera Vez)",
-      "text": "Descargue la resolucion bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
-    },
-    {
-      "icon": "fa fa-file",
-      "name": "Manual de Renovacion",
-      "text": "Descargue la resolucion bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
-    },
-    {
-      "icon": "fa fa-file",
-      "name": "Ejemplo de Solicitud Suscrita",
-      "text": "Descargue la resolucion bajo la que se reglamenta el servicio de registro de solicitudes para vidrios raibanizados."
-    },
-    {
-      "icon": "fa fa-file",
-      "name": "Ejemplo de Justificacion",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
-    },
-    {
-      "icon": "fa fa-file",
-      "name": "Ejemplo de Informe Tecnico",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "name": "Ejemplo de Justificación",
+      "text": "Descargue un ejemplo de la Justificación por motivos de Salud."
     }
   ],
   "Testimonials": [

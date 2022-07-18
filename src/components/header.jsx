@@ -43,20 +43,20 @@ export const Header = (props) => {
           <div className='container'>
             <div className='row'>
               <div className='col-md-8 col-md-offset-2 intro-text'>
-                <h1 style={{ paddingTop: '100px', paddingBottom: '100px' }}>
+                {/* <h1 style={{ paddingTop: '100px', paddingBottom: '100px' }}> */}
                   {/* {props.data ? props.data.title : 'Loading'} */}
                   {/* <span></span> */}
-                </h1>
+                {/* </h1> */}
                 {/* <p>{props.data ? props.data.paragraph : 'Loading'}</p> */}
-                <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onClick={handleVerification}>
+                {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onClick={handleVerification}>
                   VERIFICAR ROSETA
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      {/* <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
@@ -111,7 +111,7 @@ export const Header = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </header>
   )
 }

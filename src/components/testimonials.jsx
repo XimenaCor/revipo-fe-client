@@ -17,7 +17,7 @@ export const Testimonials = (props) => {
                     <div className='testimonial-content'>
                       <p>"{d.question}"</p>
                       <p> - {d.answer}</p>
-                      <div className='testimonial-meta'> - {d.name} </div>
+                      {/* <div className='testimonial-meta'> - {d.name} </div> */}
                     </div>
                   </div>
                 </div>

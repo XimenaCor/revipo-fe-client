@@ -214,9 +214,9 @@ a:focus,
   padding: 0;
   background: url(../img/portadaCenter.png) center center no-repeat;
   background-color: #e5e5e5;
+  background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
-  background-size: cover;
   -o-background-size: cover;
 }
 .intro .overlay {
@@ -267,7 +267,7 @@ header .intro-text {
 }
 /* About Section */
 #about {
-  padding: 100px 0;
+  padding: 50px;
 }
 #about h3 {
   font-size: 22px;
@@ -612,4 +612,10 @@ label {
   #about img {
     margin: 50px 0;
   }
+}
+
+.hola {
+  color: rgb(255, 255, 255);
+  flex: 1;
+  background: 'blue';
 }
