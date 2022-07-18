@@ -22,8 +22,6 @@ export const Request = (props) => {
   );
   const estadoSelect = useSelector((state) => state.solicitud.solicitudForm.tipoSolicitud)
 
-console.log(estadoSelect);
-
   const solicitudRes = useSelector(
     (state) => state.solicitud.solicitudRes
   )
