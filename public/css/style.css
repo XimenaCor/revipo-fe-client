@@ -211,14 +211,23 @@ a:focus,
 .intro {
   display: table;
   width: 100%;
+  max-height: 20em;
   padding: 0;
-  background: url(../img/portadaCenter.png) center center no-repeat;
-  background-color: #e5e5e5;
-  background-size: cover;
-  -webkit-background-size: cover;
+  background: url(../img/portadaCenterNew.jpg) center center no-repeat;
+  /* background-color: #1C1D3B; */
+  background-color: #303247;
+  /* background-color: linear-gradient(90deg, rgba(23,23,47,1) 0%, rgba(41,127,184,1) 90%); */
+  background-size: contain;
+  /* -webkit-background-size: cover;
   -moz-background-size: cover;
-  -o-background-size: cover;
+  -o-background-size: cover; */
 }
+@media screen and (max-width:600px) {
+/* #header {
+  max-height: 10em !important;
+}   */
+}
+
 .intro .overlay {
   background: rgba(0, 0, 0, 0.2);
 }
@@ -469,8 +478,9 @@ header .intro-text {
 #contact {
   padding: 100px 0 60px;
   /* background: linear-gradient(to right, #6372ff 0%, #5ca9fb 100%); */
-  background: linear-gradient(to left, #027F97 50%, #1C1D3B 50%);
-  color: rgba(255, 255, 255, 0.75);
+  background: linear-gradient(90deg, rgba(23,23,47,1) 0%, rgba(41,127,184,1) 90%);
+  color: rgba(255, 255, 255, 0.904);
+  /* color: rgba(255, 255, 255, 0.75); */
 }
 #contact .section-title {
   margin-bottom: 40px;
