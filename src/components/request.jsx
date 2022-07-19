@@ -245,7 +245,7 @@ export const Request = (props) => {
                     </div>
                   </div>
                 </div>
-                <h5>Solicitante</h5>
+                <h5>SOLICITANTE</h5>
                 <div className='row'>
                   <div className='col-md-4'>
                     <div className='form-group'>
@@ -396,7 +396,7 @@ export const Request = (props) => {
                       <p className='help-block text-danger'></p>
                     </div>
                   </div>
-                {/* SWITCH PARA CAMPOS EXTRAS */}
+{/* SWITCH PARA CAMPOS EXTRAS */}
                 {(() => {
                       switch (estadoSelect){
                       case 'AMBULANCIAS':
@@ -419,7 +419,27 @@ export const Request = (props) => {
                     </div>
                   </div>
                   </div>
-
+                  <div className='row'>
+                  <div className='col-md-12'>
+                    <div className='form-group'>
+                      <label>Tipo de Solicitud</label>
+                      <select
+                        name="tipoProceso" defaultValue={solicitudForm.tipoProceso} {...register('tipoProceso', { required: true })}
+                        className='form-control text-uppercase'
+                      >
+                        <option value="PERSONA NATURAL">PERSONA NATURAL</option>
+                        <option value="PERSONA JURIDICA">PERSONA JURÍDICA</option>
+                        <option value="REPRESENTANTE">REPRESENTANTE</option>
+                      </select>
+                      {
+                        errors.tipoSolicitud && (
+                          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+                        )
+                      }
+                      <p className='help-block text-danger'></p>
+                    </div>
+                  </div>
+                  </div>
                   </div>
                   )
                       case 'VEHICULOS OFICIALES':
@@ -479,7 +499,28 @@ export const Request = (props) => {
                                     <p className='help-block text-danger'></p>
                                   </div>
                                 </div>
-                                </div>
+                          </div>
+                          <div className='row'>
+                          <div className='col-md-12'>
+                            <div className='form-group'>
+                              <label>Tipo de Solicitud</label>
+                              <select
+                                name="tipoProceso" defaultValue={solicitudForm.tipoProceso} {...register('tipoProceso', { required: true })}
+                                className='form-control text-uppercase'
+                              >
+                                <option value="PERSONA JURIDICA">PERSONA JURÍDICA</option>
+                                <option value="REPRESENTANTE">REPRESENTANTE</option>
+                              </select>
+                              {
+                                errors.tipoSolicitud && (
+                                  <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+                                )
+                              }
+                              <p className='help-block text-danger'></p>
+                            </div>
+                          </div>
+                          </div>
+
                           </div>
                   )
                       case 'VEHICULOS PARTICULARES AUTORIDADES':
@@ -522,10 +563,31 @@ export const Request = (props) => {
                             </div>
                           </div>
                           </div>
-                    </div>
+                          <div className='row'>
+                          <div className='col-md-12'>
+                            <div className='form-group'>
+                              <label>Tipo de Solicitud</label>
+                              <select
+                                name="tipoProceso" defaultValue={solicitudForm.tipoProceso} {...register('tipoProceso', { required: true })}
+                                className='form-control text-uppercase'
+                              >
+                                <option value="PERSONA JURIDICA">PERSONA NATURAL</option>
+                                <option value="REPRESENTANTE">REPRESENTANTE</option>
+                              </select>
+                              {
+                                errors.tipoSolicitud && (
+                                  <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+                                )
+                              }
+                              <p className='help-block text-danger'></p>
+                            </div>
+                          </div>
+                          </div>
+                          </div>
                   )
                       case 'VEHICULOS CON VIDRIOS OSCURECIDOS DE FABRICA':
                         return (
+                  <div className='container'>
                   <div className='row'>
                   <div className='col-md-4'>
                     <div className='form-group'>
@@ -543,9 +605,32 @@ export const Request = (props) => {
                     </div>
                   </div>
                   </div>
+                  <div className='row'>
+                  <div className='col-md-12'>
+                    <div className='form-group'>
+                      <label>Tipo de Solicitud</label>
+                      <select
+                        name="tipoProceso" defaultValue={solicitudForm.tipoProceso} {...register('tipoProceso', { required: true })}
+                        className='form-control text-uppercase'
+                      >
+                        <option value="PERSONA NATURAL">PERSONA NATURAL</option>
+                        <option value="PERSONA JURIDICA">PERSONA JURÍDICA</option>
+                        <option value="REPRESENTANTE">REPRESENTANTE</option>
+                      </select>
+                      {
+                        errors.tipoSolicitud && (
+                          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+                        )
+                      }
+                      <p className='help-block text-danger'></p>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
                   )
                       case 'VEHICULOS POR ORDEN JUDICIAL':
                         return (
+                  <div className='container'>
                   <div className='row'>
                   <div className='col-md-4'>
                     <div className='form-group'>
@@ -563,6 +648,28 @@ export const Request = (props) => {
                     </div>
                   </div>
                   </div>
+                  <div className='row'>
+                  <div className='col-md-12'>
+                    <div className='form-group'>
+                      <label>Tipo de Solicitud</label>
+                      <select
+                        name="tipoProceso" defaultValue={solicitudForm.tipoProceso} {...register('tipoProceso', { required: true })}
+                        className='form-control text-uppercase'
+                      >
+                        <option value="PERSONA NATURAL">PERSONA NATURAL</option>
+                        <option value="PERSONA JURIDICA">PERSONA JURÍDICA</option>
+                        <option value="REPRESENTANTE">REPRESENTANTE</option>
+                      </select>
+                      {
+                        errors.tipoSolicitud && (
+                          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+                        )
+                      }
+                      <p className='help-block text-danger'></p>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
                   )
                       case 'VEHICULOS POR RAZONES DE SALUD':
                         return (
@@ -576,10 +683,31 @@ export const Request = (props) => {
                         </div>
                   </div>
                   </div>
+                  <div className='row'>
+                  <div className='col-md-12'>
+                    <div className='form-group'>
+                      <label>Tipo de Solicitud</label>
+                      <select
+                        name="tipoProceso" defaultValue={solicitudForm.tipoProceso} {...register('tipoProceso', { required: true })}
+                        className='form-control text-uppercase'
+                      >
+                        <option value="PERSONA NATURAL">PERSONA NATURAL</option>
+                        <option value="REPRESENTANTE">REPRESENTANTE</option>
+                      </select>
+                      {
+                        errors.tipoSolicitud && (
+                          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+                        )
+                      }
+                      <p className='help-block text-danger'></p>
+                    </div>
+                  </div>
+                  </div>
                   </div>
                   )
                       case 'PUBLICO':
                         return (
+                  <div className='container'>                          
                   <div className='row'>
                   <div className='col-md-4'>
                     <div className='form-group'>
@@ -597,6 +725,28 @@ export const Request = (props) => {
                     </div>
                   </div>
                   </div>
+                  <div className='row'>
+                  <div className='col-md-12'>
+                    <div className='form-group'>
+                      <label>Tipo de Solicitud</label>
+                      <select
+                        name="tipoProceso" defaultValue={solicitudForm.tipoProceso} {...register('tipoProceso', { required: true })}
+                        className='form-control text-uppercase'
+                      >
+                        <option value="PERSONA NATURAL">PERSONA NATURAL</option>
+                        <option value="PERSONA JURIDICA">PERSONA JURÍDICA</option>
+                        <option value="REPRESENTANTE">REPRESENTANTE</option>
+                      </select>
+                      {
+                        errors.tipoSolicitud && (
+                          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+                        )
+                      }
+                      <p className='help-block text-danger'></p>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
                   )    
                   default:
                           return null
@@ -604,354 +754,354 @@ export const Request = (props) => {
                       })()}
                 
                 </div>
-<h5>Vehículo</h5>
-{/* sexta fila */}
-<div className='row'>
-  <div className='col-md-3'>
-    <div className='form-group'>
-      <label>Placa </label>
-      <input
-        name="placa" defaultValue={solicitudForm.placa} {...register('placa', { required: true })}
-        className='form-control text-uppercase'
-        pattern="[0-9]{4}[A-Z]{3}"
-        placeholder='EJEM: 4321ABC'
-      />
-      {
-        errors.placa && (
-          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
-        )
-      }
-      <p className='help-block text-danger'></p>
-    </div>
-  </div>
-  <div className='col-md-3'>
-    <div className='form-group'>
-      <label>Color</label>
-      <input
-        name="color" defaultValue={solicitudForm.color} {...register('color', { required: true })}
-        className='form-control text-uppercase'
-      />
-      {
-        errors.color && (
-          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
-        )
-      }
-      <p className='help-block text-danger'></p>
-    </div>
-  </div>
-  <div className='col-md-3'>
-    <div className='form-group'>
-      <label>Año</label>
-      <input
-        name="anio" defaultValue={solicitudForm.anio} {...register('anio', { required: true })}
-        className='form-control text-uppercase' type="number" min="1900" max={actualYear.getFullYear()}
-      />
-      {
-        errors.anio && (
-          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
-        )
-      }
-      <p className='help-block text-danger'></p>
-    </div>
-  </div>
-  <div className='col-md-3'>
-    <div className='form-group'>
-      <label>Marca</label>
-      <input
-        name="marca" defaultValue={solicitudForm.marca} {...register('marca', { required: true })}
-        className='form-control text-uppercase'
-      />
-      {
-        errors.marca && (
-          <span style={{ color: "tomato" }}>Este campo es requerido!</span>
-        )
-      }
-      <p className='help-block text-danger'></p>
-    </div>
-  </div>
-</div>
+                <h5>VEHÍCULO</h5>
+                {/* sexta fila */}
+                <div className='row'>
+                    <div className='col-md-3'>
+                      <div className='form-group'>
+                        <label>Placa </label>
+                        <input
+                          name="placa" defaultValue={solicitudForm.placa} {...register('placa', { required: true })}
+                          className='form-control text-uppercase'
+                          pattern="[0-9]{4}[A-Z]{3}"
+                          placeholder='EJEM: 4321ABC'
+                        />
+                        {
+                          errors.placa && (
+                            <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+                          )
+                        }
+                        <p className='help-block text-danger'></p>
+                      </div>
+                    </div>
+                    <div className='col-md-3'>
+                      <div className='form-group'>
+                        <label>Color</label>
+                        <input
+                          name="color" defaultValue={solicitudForm.color} {...register('color', { required: true })}
+                          className='form-control text-uppercase'
+                        />
+                        {
+                          errors.color && (
+                            <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+                          )
+                        }
+                        <p className='help-block text-danger'></p>
+                      </div>
+                    </div>
+                    <div className='col-md-3'>
+                      <div className='form-group'>
+                        <label>Año</label>
+                        <input
+                          name="anio" defaultValue={solicitudForm.anio} {...register('anio', { required: true })}
+                          className='form-control text-uppercase' type="number" min="1900" max={actualYear.getFullYear()}
+                        />
+                        {
+                          errors.anio && (
+                            <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+                          )
+                        }
+                        <p className='help-block text-danger'></p>
+                      </div>
+                    </div>
+                    <div className='col-md-3'>
+                      <div className='form-group'>
+                        <label>Marca</label>
+                        <input
+                          name="marca" defaultValue={solicitudForm.marca} {...register('marca', { required: true })}
+                          className='form-control text-uppercase'
+                        />
+                        {
+                          errors.marca && (
+                            <span style={{ color: "tomato" }}>Este campo es requerido!</span>
+                          )
+                        }
+                        <p className='help-block text-danger'></p>
+                      </div>
+                    </div>
+                </div>
 {/* SWITCH PARA REQUISITOS */}
-    {(() => {
-        switch (estadoSelect){
-        case 'AMBULANCIAS':
-            return (
-              <div>
-                    <table className="table table-bordered table-condensed table-striped d-flex align-items-center" style={{ backgroundColor: "white", color: "black" }}>
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Requisitos</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr >
-                        <td>1</td>
-                        <td>Certificación emitida por el Ministerio de Salud, que acredite la otorgación del Código Único Nacional a la ambulancia o Resolución de habilitación de la ambulancia emitida por el Servicio Departamental de Salud - SEDES correspondiente.</td>
-                          <td className="intro-text" style={{ verticalAlign:'middle'}} rowSpan={3} > 
-                          <div  {...getRootProps({ className: 'dropzone' })}>
-                              <input {...getInputProps()} />
-                              <button type="button" className="btn btn-primary" ><i className='fa fa-paperclip'></i>   AGREGAR ARCHIVOS ESCANEADOS</button>
-                          </div>
-                          </td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Documento que acredite la representación del solicitante, para personas jurídicas.</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Poder de representación vigente y especifico, si corresponde.</td>
-                      </tr>
-                      <tr>
-                      </tr>
+                {(() => {
+                    switch (estadoSelect){
+                    case 'AMBULANCIAS':
+                        return (
+                          <div>
+                                <table className="table table-bordered table-condensed table-striped d-flex align-items-center" style={{ backgroundColor: "white", color: "black" }}>
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Requisitos</th>
+                                    <th></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr >
+                                    <td>1</td>
+                                    <td>Certificación emitida por el Ministerio de Salud, que acredite la otorgación del Código Único Nacional a la ambulancia o Resolución de habilitación de la ambulancia emitida por el Servicio Departamental de Salud - SEDES correspondiente.</td>
+                                      <td className="intro-text" style={{ verticalAlign:'middle'}} rowSpan={3} > 
+                                      <div  {...getRootProps({ className: 'dropzone' })}>
+                                          <input {...getInputProps()} />
+                                          <button type="button" className="btn btn-primary" ><i className='fa fa-paperclip'></i>   AGREGAR ARCHIVOS ESCANEADOS</button>
+                                      </div>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                    <td>2</td>
+                                    <td>Documento que acredite la representación del solicitante, para personas jurídicas.</td>
+                                  </tr>
+                                  <tr>
+                                    <td>3</td>
+                                    <td>Poder de representación vigente y especifico, si corresponde.</td>
+                                  </tr>
+                                  <tr>
+                                  </tr>
 
-                    </tbody>
-                  </table>
-                  {(() => {if (acceptedFiles.length >=1) {
-                  return <div> 
-                  <p> Documentos adjuntos :
-                    {filesList}</p>
-                        </div>
-                  }})()}
-              </div>
-        )
-        case 'VEHICULOS OFICIALES':
-          return (
-              <div>
-              <table className="table table-bordered table-condensed table-striped d-flex align-items-center" style={{ backgroundColor: "white", color: "black" }}>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Requisitos</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr >
-                  <td>1</td>
-                  <td>Documento que acredite la representación legal de la entidad solicitante.</td>
-                    <td className="intro-text" style={{ verticalAlign:'middle'}} rowSpan={2} > 
-                    <div  {...getRootProps({ className: 'dropzone' })}>
-                        <input {...getInputProps()} />
-                        <button type="button" className="btn btn-primary" ><i className='fa fa-paperclip'></i>   AGREGAR ARCHIVOS ESCANEADOS</button>
-                    </div>
-                    </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
-                </tr>
-              </tbody>
-            </table>
-            {(() => {if (acceptedFiles.length >=1) {
-            return <div> 
-            <p> Documentos adjuntos :
-              {filesList}</p>
-                  </div>
-            }})()}
-              </div>
-        )
-        case 'VEHICULOS PARTICULARES AUTORIDADES':
-            return (
-              <div>
-              <table className="table table-bordered table-condensed table-striped d-flex align-items-center" style={{ backgroundColor: "white", color: "black" }}>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Requisitos</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr >
-                  <td>1</td>
-                  <td>Documento que acredite la designación como autoridad o ex autoridad según corresponda.</td>
-                    <td className="intro-text" style={{ verticalAlign:'middle'}} rowSpan={3} > 
-                    <div  {...getRootProps({ className: 'dropzone' })}>
-                        <input {...getInputProps()} />
-                        <button type="button" className="btn btn-primary" ><i className='fa fa-paperclip'></i>   AGREGAR ARCHIVOS ESCANEADOS</button>
-                    </div>
-                    </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Poder de representación vigente y especifico, si corresponde.</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
-                </tr>
-              </tbody>
-            </table>
-            {(() => {if (acceptedFiles.length >=1) {
-            return <div> 
-            <p> Documentos adjuntos :
-              {filesList}</p>
-                  </div>
-            }})()}
-              </div>
-        )
-        case 'VEHICULOS CON VIDRIOS OSCURECIDOS DE FABRICA':
-            return (
-              <div>
-              <table className="table table-bordered table-condensed table-striped d-flex align-items-center" style={{ backgroundColor: "white", color: "black" }}>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Requisitos</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr >
-                  <td>1</td>
-                  <td>Documento que acredite la representación del solicitante, en caso de personas jurídicas.</td>
-                    <td className="intro-text" style={{ verticalAlign:'middle'}} rowSpan={4} > 
-                    <div  {...getRootProps({ className: 'dropzone' })}>
-                        <input {...getInputProps()} />
-                        <button type="button" className="btn btn-primary" ><i className='fa fa-paperclip'></i>   AGREGAR ARCHIVOS ESCANEADOS</button>
-                    </div>
-                    </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Poder de representación vigente y especifico, si corresponde.</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Certificado de Antecedentes Policiales de la Fuerza Especial de Lucha Contra el Crimen - FELCC, Fuerza Especial de Lucha Contra el Narcotráfico - FELCN y Transito.</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
-                </tr>
-              </tbody>
-            </table>
-            {(() => {if (acceptedFiles.length >=1) {
-            return <div> 
-            <p> Documentos adjuntos :
-              {filesList}</p>
-                  </div>
-            }})()}
-              </div>
-        )
-        case 'VEHICULOS POR ORDEN JUDICIAL':
-            return (
-              <div>
-              <table className="table table-bordered table-condensed table-striped d-flex align-items-center" style={{ backgroundColor: "white", color: "black" }}>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Requisitos</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr >
-                  <td>1</td>
-                  <td>Orden Judicial en los procesos donde se investiguen hechos de violencia, en la cual se ordene el uso de vidrios oscurecidos o polarizados, identificando la placa de circulación del vehículo al que se otorgará la autorización.</td>
-                    <td className="intro-text" style={{ verticalAlign:'middle'}} rowSpan={2} > 
-                    <div  {...getRootProps({ className: 'dropzone' })}>
-                        <input {...getInputProps()} />
-                        <button type="button" className="btn btn-primary" ><i className='fa fa-paperclip'></i>   AGREGAR ARCHIVOS ESCANEADOS</button>
-                    </div>
-                    </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
-                </tr>
-              </tbody>
-            </table>
-            {(() => {if (acceptedFiles.length >=1) {
-            return <div> 
-            <p> Documentos adjuntos :
-              {filesList}</p>
-                  </div>
-            }})()}
-              </div>
-        )
-        case 'VEHICULOS POR RAZONES DE SALUD':
-            return (
-              <div>
-              <table className="table table-bordered table-condensed table-striped d-flex align-items-center" style={{ backgroundColor: "white", color: "black" }}>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Requisitos</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr >
-                  <td>1</td>
-                  <td>Certificado médico emitido por un médico del ente Gestor de Salud o por los establecimientos públicos de salud, que expresamente contenga la recomendación al paciente de evitar la exposición a la luz solar, debido a una condición médica de acuerdo a la patología presentada.</td>
-                    <td className="intro-text" style={{ verticalAlign:'middle'}} rowSpan={3} > 
-                    <div  {...getRootProps({ className: 'dropzone' })}>
-                        <input {...getInputProps()} />
-                        <button type="button" className="btn btn-primary" ><i className='fa fa-paperclip'></i>   AGREGAR ARCHIVOS ESCANEADOS</button>
-                    </div>
-                    </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Cuando el paciente no sea el propietario del vehículo, se deberá llenar un formulario de declaración jurada identificando el vehículo que el paciente utiliza.</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
-                </tr>
-              </tbody>
-            </table>
-            {(() => {if (acceptedFiles.length >=1) {
-            return <div> 
-            <p> Documentos adjuntos :
-              {filesList}</p>
-                  </div>
-            }})()}
-              </div>
-        )
-        case 'PUBLICO':
-            return (
-              <div>
-              <table className="table table-bordered table-condensed table-striped d-flex align-items-center" style={{ backgroundColor: "white", color: "black" }}>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Requisitos</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr >
-                  <td>1</td>
-                  <td>Licencia de Conducir vigente.</td>
-                    <td className="intro-text" style={{ verticalAlign:'middle'}} rowSpan={2} > 
-                    <div  {...getRootProps({ className: 'dropzone' })}>
-                        <input {...getInputProps()} />
-                        <button type="button" className="btn btn-primary" ><i className='fa fa-paperclip'></i>   AGREGAR ARCHIVOS ESCANEADOS</button>
-                    </div>
-                    </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
-                </tr>
-              </tbody>
-            </table>
-            {(() => {if (acceptedFiles.length >=1) {
-            return <div> 
-            <p> Documentos adjuntos :
-              {filesList}</p>
-                  </div>
-            }})()}
-              </div>
-        )
-        default:
-          return null
-          }
-          })()}
+                                </tbody>
+                              </table>
+                              {(() => {if (acceptedFiles.length >=1) {
+                              return <div> 
+                              <p> Documentos adjuntos :
+                                {filesList}</p>
+                                    </div>
+                              }})()}
+                          </div>
+                    )
+                    case 'VEHICULOS OFICIALES':
+                      return (
+                          <div>
+                          <table className="table table-bordered table-condensed table-striped d-flex align-items-center" style={{ backgroundColor: "white", color: "black" }}>
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Requisitos</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr >
+                              <td>1</td>
+                              <td>Documento que acredite la representación legal de la entidad solicitante.</td>
+                                <td className="intro-text" style={{ verticalAlign:'middle'}} rowSpan={2} > 
+                                <div  {...getRootProps({ className: 'dropzone' })}>
+                                    <input {...getInputProps()} />
+                                    <button type="button" className="btn btn-primary" ><i className='fa fa-paperclip'></i>   AGREGAR ARCHIVOS ESCANEADOS</button>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {(() => {if (acceptedFiles.length >=1) {
+                        return <div> 
+                        <p> Documentos adjuntos :
+                          {filesList}</p>
+                              </div>
+                        }})()}
+                          </div>
+                    )
+                    case 'VEHICULOS PARTICULARES AUTORIDADES':
+                        return (
+                          <div>
+                          <table className="table table-bordered table-condensed table-striped d-flex align-items-center" style={{ backgroundColor: "white", color: "black" }}>
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Requisitos</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr >
+                              <td>1</td>
+                              <td>Documento que acredite la designación como autoridad o ex autoridad según corresponda.</td>
+                                <td className="intro-text" style={{ verticalAlign:'middle'}} rowSpan={3} > 
+                                <div  {...getRootProps({ className: 'dropzone' })}>
+                                    <input {...getInputProps()} />
+                                    <button type="button" className="btn btn-primary" ><i className='fa fa-paperclip'></i>   AGREGAR ARCHIVOS ESCANEADOS</button>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>Poder de representación vigente y especifico, si corresponde.</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {(() => {if (acceptedFiles.length >=1) {
+                        return <div> 
+                        <p> Documentos adjuntos :
+                          {filesList}</p>
+                              </div>
+                        }})()}
+                          </div>
+                    )
+                    case 'VEHICULOS CON VIDRIOS OSCURECIDOS DE FABRICA':
+                        return (
+                          <div>
+                          <table className="table table-bordered table-condensed table-striped d-flex align-items-center" style={{ backgroundColor: "white", color: "black" }}>
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Requisitos</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr >
+                              <td>1</td>
+                              <td>Documento que acredite la representación del solicitante, en caso de personas jurídicas.</td>
+                                <td className="intro-text" style={{ verticalAlign:'middle'}} rowSpan={4} > 
+                                <div  {...getRootProps({ className: 'dropzone' })}>
+                                    <input {...getInputProps()} />
+                                    <button type="button" className="btn btn-primary" ><i className='fa fa-paperclip'></i>   AGREGAR ARCHIVOS ESCANEADOS</button>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>Poder de representación vigente y especifico, si corresponde.</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Certificado de Antecedentes Policiales de la Fuerza Especial de Lucha Contra el Crimen - FELCC, Fuerza Especial de Lucha Contra el Narcotráfico - FELCN y Transito.</td>
+                            </tr>
+                            <tr>
+                              <td>4</td>
+                              <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {(() => {if (acceptedFiles.length >=1) {
+                        return <div> 
+                        <p> Documentos adjuntos :
+                          {filesList}</p>
+                              </div>
+                        }})()}
+                          </div>
+                    )
+                    case 'VEHICULOS POR ORDEN JUDICIAL':
+                        return (
+                          <div>
+                          <table className="table table-bordered table-condensed table-striped d-flex align-items-center" style={{ backgroundColor: "white", color: "black" }}>
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Requisitos</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr >
+                              <td>1</td>
+                              <td>Orden Judicial en los procesos donde se investiguen hechos de violencia, en la cual se ordene el uso de vidrios oscurecidos o polarizados, identificando la placa de circulación del vehículo al que se otorgará la autorización.</td>
+                                <td className="intro-text" style={{ verticalAlign:'middle'}} rowSpan={2} > 
+                                <div  {...getRootProps({ className: 'dropzone' })}>
+                                    <input {...getInputProps()} />
+                                    <button type="button" className="btn btn-primary" ><i className='fa fa-paperclip'></i>   AGREGAR ARCHIVOS ESCANEADOS</button>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {(() => {if (acceptedFiles.length >=1) {
+                        return <div> 
+                        <p> Documentos adjuntos :
+                          {filesList}</p>
+                              </div>
+                        }})()}
+                          </div>
+                    )
+                    case 'VEHICULOS POR RAZONES DE SALUD':
+                        return (
+                          <div>
+                          <table className="table table-bordered table-condensed table-striped d-flex align-items-center" style={{ backgroundColor: "white", color: "black" }}>
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Requisitos</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr >
+                              <td>1</td>
+                              <td>Certificado médico emitido por un médico del ente Gestor de Salud o por los establecimientos públicos de salud, que expresamente contenga la recomendación al paciente de evitar la exposición a la luz solar, debido a una condición médica de acuerdo a la patología presentada.</td>
+                                <td className="intro-text" style={{ verticalAlign:'middle'}} rowSpan={3} > 
+                                <div  {...getRootProps({ className: 'dropzone' })}>
+                                    <input {...getInputProps()} />
+                                    <button type="button" className="btn btn-primary" ><i className='fa fa-paperclip'></i>   AGREGAR ARCHIVOS ESCANEADOS</button>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>Cuando el paciente no sea el propietario del vehículo, se deberá llenar un formulario de declaración jurada identificando el vehículo que el paciente utiliza.</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {(() => {if (acceptedFiles.length >=1) {
+                        return <div> 
+                        <p> Documentos adjuntos :
+                          {filesList}</p>
+                              </div>
+                        }})()}
+                          </div>
+                    )
+                    case 'PUBLICO':
+                        return (
+                          <div>
+                          <table className="table table-bordered table-condensed table-striped d-flex align-items-center" style={{ backgroundColor: "white", color: "black" }}>
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Requisitos</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr >
+                              <td>1</td>
+                              <td>Licencia de Conducir vigente.</td>
+                                <td className="intro-text" style={{ verticalAlign:'middle'}} rowSpan={2} > 
+                                <div  {...getRootProps({ className: 'dropzone' })}>
+                                    <input {...getInputProps()} />
+                                    <button type="button" className="btn btn-primary" ><i className='fa fa-paperclip'></i>   AGREGAR ARCHIVOS ESCANEADOS</button>
+                                </div>
+                                </td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>Certificado de Registro de Propiedad Vehicular Automotor - CRPVA, o documentación que acredite la tenencia legal del vehículo.</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                        {(() => {if (acceptedFiles.length >=1) {
+                        return <div> 
+                        <p> Documentos adjuntos :
+                          {filesList}</p>
+                              </div>
+                        }})()}
+                          </div>
+                    )
+                    default:
+                      return null
+                      }
+                      })()}
                 <div id='success'></div>
                 <button type='submit' className='btn btn-custom btn-lg'>
                   Enviar Solicitud

@@ -37,6 +37,7 @@ const initialState = {
     institucion: null,
     cargo: null,
     justificacion: null,
+    tipoProceso: null,
     
   },
   solicitudRes: null,
