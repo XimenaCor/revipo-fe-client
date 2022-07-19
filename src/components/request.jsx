@@ -424,7 +424,7 @@ export const Request = (props) => {
                     <div className='form-group'>
                       <label>Tipo de Solicitud</label>
                       <select
-                        name="tipoProceso" defaultValue={solicitudForm.tipoProceso} {...register('tipoProceso', { required: true })}
+                        name="tipoPersoneria" defaultValue={solicitudForm.tipoPersoneria} {...register('tipoPersoneria', { required: true })}
                         className='form-control text-uppercase'
                       >
                         <option value="PERSONA NATURAL">PERSONA NATURAL</option>
@@ -505,7 +505,7 @@ export const Request = (props) => {
                             <div className='form-group'>
                               <label>Tipo de Solicitud</label>
                               <select
-                                name="tipoProceso" defaultValue={solicitudForm.tipoProceso} {...register('tipoProceso', { required: true })}
+                                name="tipoPersoneria" defaultValue={solicitudForm.tipoPersoneria} {...register('tipoPersoneria', { required: true })}
                                 className='form-control text-uppercase'
                               >
                                 <option value="PERSONA JURIDICA">PERSONA JURÍDICA</option>
@@ -568,7 +568,7 @@ export const Request = (props) => {
                             <div className='form-group'>
                               <label>Tipo de Solicitud</label>
                               <select
-                                name="tipoProceso" defaultValue={solicitudForm.tipoProceso} {...register('tipoProceso', { required: true })}
+                                name="tipoPersoneria" defaultValue={solicitudForm.tipoPersoneria} {...register('tipoPersoneria', { required: true })}
                                 className='form-control text-uppercase'
                               >
                                 <option value="PERSONA JURIDICA">PERSONA NATURAL</option>
@@ -610,7 +610,7 @@ export const Request = (props) => {
                     <div className='form-group'>
                       <label>Tipo de Solicitud</label>
                       <select
-                        name="tipoProceso" defaultValue={solicitudForm.tipoProceso} {...register('tipoProceso', { required: true })}
+                        name="tipoPersoneria" defaultValue={solicitudForm.tipoPersoneria} {...register('tipoPersoneria', { required: true })}
                         className='form-control text-uppercase'
                       >
                         <option value="PERSONA NATURAL">PERSONA NATURAL</option>
@@ -653,7 +653,7 @@ export const Request = (props) => {
                     <div className='form-group'>
                       <label>Tipo de Solicitud</label>
                       <select
-                        name="tipoProceso" defaultValue={solicitudForm.tipoProceso} {...register('tipoProceso', { required: true })}
+                        name="tipoPersoneria" defaultValue={solicitudForm.tipoPersoneria} {...register('tipoPersoneria', { required: true })}
                         className='form-control text-uppercase'
                       >
                         <option value="PERSONA NATURAL">PERSONA NATURAL</option>
@@ -688,7 +688,7 @@ export const Request = (props) => {
                     <div className='form-group'>
                       <label>Tipo de Solicitud</label>
                       <select
-                        name="tipoProceso" defaultValue={solicitudForm.tipoProceso} {...register('tipoProceso', { required: true })}
+                        name="tipoPersoneria" defaultValue={solicitudForm.tipoPersoneria} {...register('tipoPersoneria', { required: true })}
                         className='form-control text-uppercase'
                       >
                         <option value="PERSONA NATURAL">PERSONA NATURAL</option>
@@ -730,7 +730,7 @@ export const Request = (props) => {
                     <div className='form-group'>
                       <label>Tipo de Solicitud</label>
                       <select
-                        name="tipoProceso" defaultValue={solicitudForm.tipoProceso} {...register('tipoProceso', { required: true })}
+                        name="tipoPersoneria" defaultValue={solicitudForm.tipoPersoneria} {...register('tipoPersoneria', { required: true })}
                         className='form-control text-uppercase'
                       >
                         <option value="PERSONA NATURAL">PERSONA NATURAL</option>
